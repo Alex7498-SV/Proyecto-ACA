@@ -1,0 +1,150 @@
+.center{
+	text-align: center;
+}
+
+body{
+	background: #1f4e5f;
+}
+
+.container-login{
+	margin-top: 100px;
+	margin-bottom: 100px;
+	width: 40%;
+	background: #79a8a9;
+	padding: 30px;
+	color: #f4f7f7;
+}
+
+.color-btnSesion{
+	background: #1f4e5f;
+	color: White;
+}
+
+.color-btnSesion:hover{
+	background: #29657B;
+	color: White;
+}
+
+.formularios{
+	margin-top: 50px;
+	margin-bottom: 50px;
+	background: #79a8a9;
+	padding: 20px;
+	color: #f4f7f7;
+	border-radius: 10px;
+	width: 70%;
+}
+
+.btn-center{
+	display: flex;
+  	justify-content: center;
+}
+
+.tablas{
+	margin-top: 50px;
+	margin-bottom: 50px;
+	background: #112d4e;
+	padding: 20px;
+	color: #dbe2ef;
+	border-radius: 10px;
+}
+
+thead{
+	background: white;
+}
+
+tbody{
+	color: white;
+}
+
+.tablas-ventana{
+	background: #f9f7f7;
+}
+
+.nuevoDato{
+	text-align: left;
+}
+
+.nuevoDato > a{
+	background: #f9f7f7;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	color: #112d4e;
+}
+
+.bg-menu{
+	background: #112d4e;
+}
+
+.bg-menu2{
+	background: #79a8a9;
+}
+
+.bg-menu2 .navbar-dark .navbar-nav .nav-link{
+	color: white;
+}
+
+nav > a > img{
+	width: 150px;
+	height: 75px;
+	border-radius: 20px;
+}
+
+.materiaForm{
+	width: 40%;
+}
+
+.tabla2{
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.alumnoFrm{
+	width: 40%;
+	margin-left: 20px;
+	margin-top: 10px;
+}
+
+.dataTables_length{
+	text-align: left;
+	margin-bottom: 20px;
+}
+
+.dataTables_length select{
+	float: left;
+}
+
+.dataTables_filter{
+	float: right;
+	text-align: left;
+}
+
+.dataTables_paginate{
+	display: flex;
+	justify-content: flex-end;
+}
+
+.page-item.active .page-link{
+	background: #17a2b8;
+}
+
+.btnAceptar{
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+
+input[type=number]::-webkit-inner-spin-button {
+
+    -webkit-appearance: none;
+
+    margin: 0;
+
+}
+
+input[type=number] {
+
+    -moz-appearance:textfield;
+
+}

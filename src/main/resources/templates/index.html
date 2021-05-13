@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Inicio de sesión</title>
+
+<link rel="icon" type="image/png" href="img/icono.ico" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="alert alert-danger" role="alert" th:if="${mensaje != null}" th:text="${mensaje}">
+	  
+	</div>
+	<div class="container container-login">
+		<h1 class="center">Inicio de sesión</h1>
+		<form th:action="@{/iniciarSesion}" method="post">
+		  <div class="form-group">
+		    <label for="exampleInputEmail1">Nombre de usuario</label>
+		    <input type="text" class="form-control" id="exampleInputEmail1" name="nombreUser">
+		  </div>
+		  <div class="form-group">
+		    <label for="exampleInputPassword1">Contraseña</label>
+		    <input type="password" class="form-control" id="exampleInputPassword1" name="contrasenia">
+		  </div>
+		  <p>¿No tienes cuenta? <a href="/registro?tipo=0" class="text-dark">Registrate</a></p>
+		  <button type="submit" class="btn color-btnSesion">Iniciar Sesión</button>
+		</form>
+	</div>
+	
+</body>
+</html>

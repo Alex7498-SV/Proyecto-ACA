@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Materia cursada</title>
+<link rel="icon" type="image/png" href="img/icono.ico" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-menu2" style="margin-bottom: 30px;"> 
+		<a class="navbar-brand" href="#"><img alt="" src="img/logo.jpeg"></a>
+	  <div style="width: 100%;text-align: right">
+            <a class="btn btn-secondary btn-light" type="button" aria-haspopup="true" aria-expanded="false" href="/logout"> 
+                    Cerrar Sesión
+                  </a>
+	  </div>
+	 </nav>
+
+	<div class="container formularios alumnoFrm">
+		
+		<div class="form-group">
+			<label for="boton">Nombre del alumno</label>
+			<input type="text" th:field="${estu.nombre}" class="form-control" id="boton" readonly="readonly">
+			<!-- th:value="${id}" -->
+		</div>
+	</div>
+
+	<div class="container formularios materiaForm">
+		<h1 class="center">Formulario de Materia cursada</h1> 
+		<form th:action="@{/insertarMateriaAlumno}" th:object="${materiaAlumno}" method="post">
+			<input type="hidden" th:value="${estu.idEstudiante}" class="form-control" name="id2" id="boton2">
+			<input type="hidden" th:value="${id2}" class="form-control" name="id" id="boton3">
+			<div class="form-group">
+				<label for="Select1">Materia</label>
+				<select class="form-control" th:field="*{materia}" id="Select1">
+					<option value="0">Seleccione una opción</option>
+				    <option th:each=item:${materiaLista}
+				    		th:value="${item.idMateria}" th:text="${item.nombre}"></option>
+				</select>
+				<span th:if="${resultado == 1}" style = "color: yellow">Debe seleccionar una materia!</span>
+			</div>
+						
+			<div class="form-group">
+				<label for="anio">Año</label>
+				<input type="number" class="form-control" th:field="*{anio}" id="anio">
+				<span th:if="${resultado2 == 1}" style="color: yellow">El año debe ser entre 2005 - 2020</span>
+			</div>
+			<div class="form-group">
+				<label for="ciclo">Ciclo</label>
+				<select class="form-control" th:field="*{ciclo}" id="ciclo">
+					<option value="0">Seleccione una opción</option>
+					<option value="1">Ciclo 1</option>
+					<option value="2">Ciclo 2</option>
+					<option value="3">Ciclo 3</option>
+				</select>
+				<span th:if="${resultado3 == 1}" style = "color: yellow">Debe seleccionar una ciclo!</span>
+			</div>
+			<div class="form-group">
+				<label for="nota">Nota</label>
+				<input type="number" class="form-control" th:field="*{nota}" id="nota" step="any">
+				<span th:if="${resultado4 == 1}" style = "color: yellow">La nota debe estar entre 0 y 10!</span>
+			</div>
+			<div class="btn-center">
+					<a class="btn color-btnSesion" id="regresar">Regresar</a>
+					<button type="submit" class="btn color-btnSesion btnAceptar">Registrar</button>
+					<a id="limpiar" class="btn color-btnSesion">Limpiar</a>
+				</div>
+		</form>
+	</div>
+</body>
+
+	<script type="text/javascript">
+		var val1 = document.getElementById("boton2").value;
+		var val2 = document.getElementById("regresar");
+		val2.href = "/materiasCursadas?id=" + val1;
+		var a = document.getElementById("limpiar");
+		a.onclick = limpiar
+		if(document.getElementById("boton3").value != ""){
+			document.getElementById("limpiar").style.display="none";	
+		}
+		function limpiar(){
+			document.getElementById("anio").value = "0";
+			document.getElementById("ciclo").options[0].selected = true;
+			document.getElementById("nota").value = "0.0";
+			document.getElementById("Select1").options[0].selected = true;
+		}
+	</script>
+
+</html>

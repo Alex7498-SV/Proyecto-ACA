@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Alumno</title>
+<link rel="icon" type="image/png" href="img/icono.ico" />
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-menu2"> 
+		<a class="navbar-brand" href="#"><img alt="" src="img/logo.jpeg"></a>
+	  <div style="width: 100%;text-align: right">
+            <a class="btn btn-secondary btn-light" type="button" aria-haspopup="true" aria-expanded="false" href="/logout"> 
+                    Cerrar Sesión
+                  </a>
+	  </div>
+	 </nav>
+	<div class="container formularios">
+		<h1 class="center">Formulario de Alumno</h1>
+		<form th:action="@{/registroEstudiante}" th:object="${estudiante}" method="post">
+			<div class="form-group">
+				<input type="hidden"
+					class="form-control" id="id" 
+					th:field="*{idEstudiante}">
+			</div>
+			<div class="row">
+				<div class="col-md">
+					<div class="form-group">
+						<label for="nombre">Nombre</label> <input type="text" th:field="*{nombre}"
+							class="form-control" id="nombre"><span th:errors="*{nombre}" style="color: yellow"></span>
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="form-group">
+						<label for="apellido">Apellido</label> <input type="text" th:field="*{apellido}"
+							class="form-control" id="apellido"><span th:errors="*{apellido}" style="color: yellow"></span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md">
+					<div class="form-group">
+						<label for="carnet">Número de carnet de minoridad</label> <input type="text" th:field="*{carnet}"
+							class="form-control" id="carnet"><span th:errors="*{carnet}" style="color: yellow"></span>
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="form-group">
+						<label for="fecha">Fecha de nacimiento</label> <input type="date"
+							id="fecha" class="form-control" th:field="*{fechaNac}"> </span>
+							<span th:if="${resultado3 == 1}"  style="color: yellow;">Debe seleccionar una fecha!</span>
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="form-group">
+						<label for="edad">Edad</label> <input type="text"
+							class="form-control" id="edad" th:field="*{edad}" th:value="*{edad}" readonly="readonly">
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="direccion">Dirección de
+					vivienda</label>
+				<textarea th:field="*{direccion}" class="form-control" id="direccion" 
+					rows="3"></textarea><span th:errors="*{direccion}" style="color: yellow"></span>
+			</div>
+			<div class="row">
+				<div class="col-md">
+					<div class="form-group">
+						<label for="telefonof">Télefono fijo</label> <input type="text" th:field="*{telefonoFijo}"
+							class="form-control" id="telefonof"><span th:errors="*{telefonoFijo}" style="color: yellow"></span>
+					</div>
+				</div>
+				<div class="col-md">	
+					<div class="form-group">
+						<label for="telefonom">Télefono móvil</label> <input type="text" th:field="*{telefonoMovil}"
+							class="form-control" id="telefonom"><span th:errors="*{telefonoMovil}" style="color: yellow"></span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md">
+					<div class="form-group">
+						<label for="departamento">Departamento de residencia</label> <select th:field="*{departamento}"
+							class="form-control" id="departamento">
+							<!--  th:field="*{departamento.idDepartamento}"  -->
+							<option value="0">Seleccione una opción</option>
+							<option th:each=item:${departamentoLista}
+								th:value="${item.idDepartamento}"
+								th:text="${item.nombreDepartamento}">
+						</select>
+						<span th:if="${resultado == 1}" style = "color: yellow">Debe seleccionar un departamento!</span>
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="form-group">
+						<label for="municipio">Municipio de residencia</label> <select th:field="*{municipio}"
+							class="form-control" id="municipio">
+							<!--  th:field="*{municipio.idMunicipio}"  -->
+							<option value="0">Seleccione una opción</option>
+							<option th:each=item:${municipioLista}
+								th:value="${item.idMunicipio}" th:text="${item.nombreMunicipio}">
+						</select>
+						<span th:if="${resultado1 == 1}" style = "color: yellow">Debe seleccionar un municipio!</span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md">
+					<div class="form-group">
+						<label for="centroE">Departamento de centro escolar </label> <select th:field="*{centroEscolar.municipio.departamento}"
+							class="form-control" id="departamentoCE">
+							<option value="0">Seleccione una opción</option>
+							<option th:each=item:${departamentoListTodo}
+								th:value="${item.idDepartamento}" th:text="${item.nombreDepartamento}">
+						</select>
+						<span th:if="${resultado2 == 1}" style = "color: yellow">Debe seleccionar un centro escolar!</span>
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="form-group">
+							<label for="centroE">Municipio de centro escolar </label> <select th:field="*{centroEscolar.municipio}"
+								class="form-control" id="municipioCE">
+								<option value="0">Seleccione una opción</option>
+								<option th:each=item:${municipioListTodo}
+									th:value="${item.idMunicipio}" th:text="${item.nombreMunicipio}">
+							</select>
+						</div>
+				</div>
+				<div class="col-md">
+					<div class="form-group">
+						<label for="centroE">Centro escolar </label> <select th:field="*{centroEscolar}"
+							class="form-control" id="centroE">
+							<option value="0">Seleccione una opción</option>
+							<option th:each=item:${centro}
+								th:value="${item.idCentroEscolar}" th:text="${item.nombre}">
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md">
+					<div class="form-group">
+						<label for="padre">Nombre del padre</label> <input type="text" th:field="*{nombrePadre}"
+							class="form-control" id="padre"><span th:errors="*{nombrePadre}" style="color: yellow"></span>
+					</div>
+				</div>
+				<div class="col-md">
+					<div class="form-group">
+						<label for="madre">Nombre de la madre</label> <input type="text" th:field="*{nombreMadre}"
+							class="form-control" id="madre"><span th:errors="*{nombreMadre}" style="color: yellow"></span>
+					</div>
+				</div>
+			</div>
+			<div class="btn-center">
+					<a href="/busquedaAlumno" class="btn color-btnSesion" id="regresar">Regresar</a>
+					<button type="submit" class="btn color-btnSesion btnAceptar">Registrar</button>
+					<a id="limpiar" class="btn color-btnSesion">Limpiar</a>
+				</div>
+		</form>
+	</div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<script type="text/javascript">
+		var id = document.getElementById("id").value;
+		var btn = document.getElementById("regresar");
+		if(id != ""){
+			btn.href="/RegresarTablaExpediente";
+		}
+		var a = document.getElementById("limpiar");
+		a.onclick = limpiar
+		if(document.getElementById("id").value != ""){
+			document.getElementById("limpiar").style.display="none";	
+		}
+		function limpiar(){
+			document.getElementById("nombre").value = "";
+			document.getElementById("apellido").value = "";
+			document.getElementById("edad").value = "";
+			document.getElementById("carnet").value = "";
+			document.getElementById("direccion").value = "";
+			document.getElementById("telefonom").value = "";
+			document.getElementById("telefonof").value = "";
+			document.getElementById("padre").value = "";
+			document.getElementById("madre").value = "";
+			document.getElementById("departamento").options[0].selected = true;
+			document.getElementById("municipio").options[0].selected = true;
+			document.getElementById("centroE").options[0].selected = true;
+			document.querySelector("#fecha").value = "dd/mm/aaaa"
+			$('#municipio').empty();
+			$('#centroE').empty();
+			var select = document.getElementById("municipio");
+			$("<option/>").val(0).text("Seleccione una opción").appendTo("#municipio");
+			var select = document.getElementById("centroE");
+			$("<option/>").val(0).text("Seleccione una opción").appendTo("#centroE");
+		}
+	</script>
+
+<script src="js/scriptsParcial.js" type="text/javascript"></script>
+<script type="text/javascript">
+	combobox(1);
+</script>
+	
+</html>

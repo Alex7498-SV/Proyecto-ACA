@@ -10,9 +10,9 @@ body{
 	margin-top: 100px;
 	margin-bottom: 100px;
 	width: 40%;
-	background: #79a8a9;
+	background: #f9f7f7;
 	padding: 30px;
-	color: #f4f7f7;
+	color: black;
 }
 
 .color-btnSesion{
@@ -28,9 +28,9 @@ body{
 .formularios{
 	margin-top: 50px;
 	margin-bottom: 50px;
-	background: #79a8a9;
+	background: #f9f7f7;
 	padding: 20px;
-	color: #f4f7f7;
+	color: black;
 	border-radius: 10px;
 	width: 70%;
 }
@@ -43,18 +43,18 @@ body{
 .tablas{
 	margin-top: 50px;
 	margin-bottom: 50px;
-	background: #112d4e;
+	background: rgb(228, 228, 228);
 	padding: 20px;
-	color: #dbe2ef;
+	color: black;
 	border-radius: 10px;
 }
 
 thead{
-	background: white;
+	background: #1f4e5f;
 }
 
 tbody{
-	color: white;
+	color: black;
 }
 
 .tablas-ventana{

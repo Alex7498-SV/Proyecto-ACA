@@ -12,7 +12,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.capas.uca.parcial3.domain.CentroEscolar;
-import com.capas.uca.parcial3.domain.Estudiante;
 import com.capas.uca.parcial3.repositorie.CentroEscolarRepo;
 
 @Service

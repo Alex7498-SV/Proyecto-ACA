@@ -19,7 +19,7 @@
 <body>
 	
 	<nav class="navbar navbar-expand-lg navbar-dark bg-menu2"> 
-	  <a class="navbar-brand" href="#"><img alt="" src="img/logo.jpeg"></a>
+	  <a class="navbar-brand" href="#"><img alt="" src="img/icon.png"></a>
 	  <div style="width: 100%;text-align: right" th:if="${tipoF == 1}">
             <a class="btn btn-secondary btn-light" type="button" aria-haspopup="true" aria-expanded="false" href="/logout"> 
                     Cerrar Sesión
@@ -27,7 +27,7 @@
 	  </div>
 	 </nav>
 	
-	<div class="container formularios">
+	<div class="container formulariosMod">
 		<h1 class="center">Formulario de usuario</h1>
 		<form th:action="@{/ingresarUsuario}" th:object="${usuario}" method="post">
 			<div class="form-group">

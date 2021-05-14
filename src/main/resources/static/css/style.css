@@ -3,16 +3,16 @@
 }
 
 body{
-	background: #1f4e5f;
+	background: #e6e6e6;
 }
 
 .container-login{
 	margin-top: 100px;
 	margin-bottom: 100px;
 	width: 40%;
-	background: #79a8a9;
+	background: #e6e6e6;
 	padding: 30px;
-	color: #f4f7f7;
+	color: #000000;
 }
 
 .color-btnSesion{
@@ -28,9 +28,9 @@ body{
 .formularios{
 	margin-top: 50px;
 	margin-bottom: 50px;
-	background: #79a8a9;
+	background: #e6e6e6;
 	padding: 20px;
-	color: #f4f7f7;
+	color: #000000;
 	border-radius: 10px;
 	width: 70%;
 }
@@ -43,18 +43,19 @@ body{
 .tablas{
 	margin-top: 50px;
 	margin-bottom: 50px;
-	background: #112d4e;
+	background: rgb(207, 207, 207);
 	padding: 20px;
-	color: #dbe2ef;
+	color: black;
 	border-radius: 10px;
 }
 
 thead{
-	background: white;
+	background: #1f4e5f;
+	color: white
 }
 
 tbody{
-	color: white;
+	color: Black;
 }
 
 .tablas-ventana{

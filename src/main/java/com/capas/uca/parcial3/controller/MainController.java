@@ -127,6 +127,7 @@ public class MainController {
 		}
 		return mav;
 	}
+	
 
 	public ModelAndView sesionCoordinador(HttpSession request, ModelAndView mav) {
 		Usuario user = null;

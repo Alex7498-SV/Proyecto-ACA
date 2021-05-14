@@ -3,7 +3,7 @@
 }
 
 body{
-	background: #e6e6e6;
+	background: #112d4e;
 }
 
 .container-login{
@@ -13,6 +13,7 @@ body{
 	background: #e6e6e6;
 	padding: 30px;
 	color: #000000;
+	border-radius: 10px 10px;
 }
 
 .color-btnSesion{
@@ -55,7 +56,7 @@ thead{
 }
 
 tbody{
-	color: Black;
+	color: black;
 }
 
 .tablas-ventana{

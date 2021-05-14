@@ -112,35 +112,4 @@ public class MainController {
 		}
 		return data;
 	}
-
-	public ModelAndView sesionAdmin(HttpSession request, ModelAndView mav) {
-		Usuario user = null;
-		user = (Usuario) request.getAttribute("user");
-		if (user != null) {
-			if (user.getTipoUsuario() == true) {
-				mav.clear();
-				mav.setViewName("redirect:/busquedaAlumno");
-			}
-		} else {
-			mav.clear();
-			mav.setViewName("redirect:/index");
-		}
-		return mav;
-	}
-	
-
-	public ModelAndView sesionCoordinador(HttpSession request, ModelAndView mav) {
-		Usuario user = null;
-		user = (Usuario) request.getAttribute("user");
-		if (user != null) {
-			if (user.getTipoUsuario() == false) {
-				mav.clear();
-				mav.setViewName("redirect:/tablaUsuario");
-			}
-		} else {
-			mav.clear();
-			mav.setViewName("redirect:/index");
-		}
-		return mav;
-	}
 }

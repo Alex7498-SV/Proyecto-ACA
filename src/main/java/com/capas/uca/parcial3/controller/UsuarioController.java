@@ -44,6 +44,7 @@ public class UsuarioController {
 	@RequestMapping("/tablaUsuario")
 	public ModelAndView tablaUsuario(HttpSession request) {
 		ModelAndView mav = new ModelAndView();
+		maincontroller.sesionAdmin(request, mav);
 		return mav;
 	}
 	
@@ -64,6 +65,11 @@ public class UsuarioController {
 		mav.addObject("usuario", usuarioLista);
 		mav.addObject("tipoF", tipo);
 		mav.setViewName("registroUsuario");
+		
+		if(tipo == 1) {
+			maincontroller.sesionAdmin(request, mav);
+		}
+		
 		return mav;
 	}
 
@@ -87,6 +93,10 @@ public class UsuarioController {
 		mav.addObject("tipoF", tipo);
 		mav.addObject("id", id);
 		mav.setViewName("registroUsuario");
+		
+		if(tipo == 1) {
+			maincontroller.sesionAdmin(request, mav);
+		}
 
 		return mav;
 	}

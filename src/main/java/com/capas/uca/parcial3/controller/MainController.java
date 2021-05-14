@@ -81,6 +81,7 @@ public class MainController {
 						user.setSesion(true);
 						usuarioService.insertAndUpdate(user);
 						request.setAttribute("user", user);
+						request.setMaxInactiveInterval(-1);
 					} else {
 						mav.setViewName("index");
 						mav.addObject("mensaje", "Su sesión ya esta activa!");
@@ -111,5 +112,35 @@ public class MainController {
 			data.add(new String[] { u.getIdMunicipio().toString(), u.getNombreMunicipio() });
 		}
 		return data;
+	}
+	
+	public ModelAndView sesionAdmin(HttpSession request, ModelAndView mav) {
+		Usuario user = null;
+		user = (Usuario) request.getAttribute("user");
+		if (user != null) {
+			if (user.getTipoUsuario() == true) {
+				mav.clear();
+				mav.setViewName("redirect:/busquedaAlumno");
+			}
+		} else {
+			mav.clear();
+			mav.setViewName("redirect:/index");
+		}
+		return mav;
+	}
+
+	public ModelAndView sesionCoordinador(HttpSession request, ModelAndView mav) {
+		Usuario user = null;
+		user = (Usuario) request.getAttribute("user");
+		if (user != null) {
+			if (user.getTipoUsuario() == false) {
+				mav.clear();
+				mav.setViewName("redirect:/tablaUsuario");
+			}
+		} else {
+			mav.clear();
+			mav.setViewName("redirect:/index");
+		}
+		return mav;
 	}
 }

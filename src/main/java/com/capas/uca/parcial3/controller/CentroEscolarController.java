@@ -41,6 +41,7 @@ public class CentroEscolarController {
 	public ModelAndView tablaCentroEscolar(HttpSession request) {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("tablaCentroEscolar");
+		maincontroller.sesionAdmin(request, mav);
 		return mav;
 	}
 
@@ -74,6 +75,7 @@ public class CentroEscolarController {
 		mav.addObject("centroEscolar", new CentroEscolar());
 		mav.addObject("municipioLista", municipioLista);
 		mav.setViewName("registroCentroEscolar");
+		maincontroller.sesionAdmin(request, mav);
 		return mav;
 	}
 

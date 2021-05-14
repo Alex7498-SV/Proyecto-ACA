@@ -31,10 +31,6 @@ public class Departamento {
 	
 	@OneToMany(mappedBy="departamento",fetch=FetchType.LAZY)
 	private List<Usuario> usuario;
-	
-	@OneToMany(mappedBy="departamento",fetch=FetchType.LAZY)
-	private List<Estudiante> estudiante;
-	
 
 	public Departamento() {
 		
@@ -67,14 +63,6 @@ public class Departamento {
 
 	public void setUsuario(List<Usuario> usuario) {
 		this.usuario = usuario;
-	}
-
-	public List<Estudiante> getEstudiante() {
-		return estudiante;
-	}
-
-	public void setEstudiante(List<Estudiante> estudiante) {
-		this.estudiante = estudiante;
 	}
 	
 }

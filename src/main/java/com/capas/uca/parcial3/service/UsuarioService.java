@@ -6,7 +6,6 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.capas.uca.parcial3.domain.Estudiante;
 import com.capas.uca.parcial3.domain.Usuario;
 
 public interface UsuarioService {

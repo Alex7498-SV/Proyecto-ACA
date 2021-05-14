@@ -47,9 +47,6 @@ public class CentroEscolar {
 	@Column(name="estado")
 	private Boolean estado;
 	
-	@OneToMany(mappedBy="centroEscolar",fetch=FetchType.LAZY)
-	private List<Estudiante> estudiante;
-	
 	public CentroEscolar() {
 		
 	}
@@ -100,14 +97,6 @@ public class CentroEscolar {
 
 	public void setEstado(Boolean estado) {
 		this.estado = estado;
-	}
-
-	public List<Estudiante> getEstudiante() {
-		return estudiante;
-	}
-
-	public void setEstudiante(List<Estudiante> estudiante) {
-		this.estudiante = estudiante;
 	}
 	
 	public String getDelegateEstado() {

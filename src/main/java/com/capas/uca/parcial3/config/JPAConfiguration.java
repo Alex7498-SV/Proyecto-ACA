@@ -44,9 +44,10 @@ public class JPAConfiguration {
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("org.postgresql.Driver");
-		dataSource.setUrl("jdbc:postgresql://localhost:5432/BDParcial3");
+		dataSource.setUrl("jdbc:postgresql://localhost:5432/DBParcial3");
+		
 		dataSource.setUsername("postgres");
-		dataSource.setPassword("Admin");
+		dataSource.setPassword("root");
 		
 		return dataSource;
 	}

@@ -3,8 +3,9 @@
 }
 
 body{
-	background: #112d4e;
+	background: #e6e6e6;
 }
+
 
 .container-login{
 	margin-top: 100px;
@@ -35,6 +36,17 @@ body{
 	border-radius: 10px;
 	width: 70%;
 }
+
+.formulariosMod{
+	margin-top: 50px;
+	margin-bottom: 50px;
+	background: #1f4e5f;
+	padding: 20px;
+	color: White;
+	border-radius: 10px;
+	width: 70%;
+}
+
 
 .btn-center{
 	display: flex;
@@ -75,11 +87,11 @@ tbody{
 }
 
 .bg-menu{
-	background: #112d4e;
+	background: #1f4e5f;
 }
 
 .bg-menu2{
-	background: #79a8a9;
+	background: #1f4e5f;
 }
 
 .bg-menu2 .navbar-dark .navbar-nav .nav-link{

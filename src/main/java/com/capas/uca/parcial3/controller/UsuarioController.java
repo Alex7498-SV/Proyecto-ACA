@@ -44,6 +44,7 @@ public class UsuarioController {
 	@RequestMapping("/tablaUsuario")
 	public ModelAndView tablaUsuario(HttpSession request) {
 		ModelAndView mav = new ModelAndView();
+		request.setMaxInactiveInterval(0);
 		maincontroller.sesionAdmin(request, mav);
 		return mav;
 	}
@@ -67,6 +68,7 @@ public class UsuarioController {
 		mav.setViewName("registroUsuario");
 		
 		if(tipo == 1) {
+			request.setMaxInactiveInterval(0);
 			maincontroller.sesionAdmin(request, mav);
 		}
 		
@@ -95,6 +97,7 @@ public class UsuarioController {
 		mav.setViewName("registroUsuario");
 		
 		if(tipo == 1) {
+			request.setMaxInactiveInterval(0);
 			maincontroller.sesionAdmin(request, mav);
 		}
 

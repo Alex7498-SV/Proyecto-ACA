@@ -29,3 +29,5 @@ build/
 
 ### VS Code ###
 .vscode/
+
+src/main/java/com/capas/uca/parcial3/config/JPAConfiguration.java

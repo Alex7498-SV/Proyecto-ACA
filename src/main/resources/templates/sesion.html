@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- CSS only -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+	<!-- JS, Popper.js, and jQuery -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+	<meta charset="ISO-8859-1">
+	<title>Redirect</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body >
+	<nav class="navbar navbar-expand-lg navbar-dark bg-menu2"> 
+	  <a class="navbar-brand" href="#"><img alt="" src="img/icon.png"></a>
+	  <div style="width: 100%;text-align: right" th:if="${tipoF == 1}">
+        <a class="btn btn-secondary btn-light" type="button" aria-haspopup="true" aria-expanded="false" href="/logout"> 
+                Cerrar Sesión
+        </a> 
+	  </div>
+	 </nav>
+	<div class="container-fluid logErr">
+		<div class="content-logErr">
+			<div class="jumbotron">
+				<h1 class="display-4">Se ha detectado un inicio doble de sesion.</h1>
+				<p class="lead">Desconectando su cuenta.</p>
+				<hr class="my-4">
+				<div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+					<span class="sr-only">Loading...</span>
+				</div>
+			  </div>
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+    function redireccionar(){window.location="/";}
+    setTimeout ("redireccionar()", 2000);
+</script>

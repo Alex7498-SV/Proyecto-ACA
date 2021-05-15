@@ -81,10 +81,11 @@ public class MainController {
 						user.setSesion(true);
 						usuarioService.insertAndUpdate(user);
 						request.setAttribute("user", user);
-						request.setMaxInactiveInterval(-1);
 					} else {
-						mav.setViewName("index");
-						mav.addObject("mensaje", "Su sesión ya esta activa!");
+						
+						mav.setViewName("sesion");
+						user.setSesion(false);
+						usuarioService.insertAndUpdate(user);
 					}
 				} else {
 					mav.setViewName("index");

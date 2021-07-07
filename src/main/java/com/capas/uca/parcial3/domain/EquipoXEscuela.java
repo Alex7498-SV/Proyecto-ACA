@@ -17,9 +17,6 @@ import javax.persistence.Transient;
 @Table(schema="public", name="equipoxescuela")
 public class EquipoXEscuela {
 
-
-
-
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="idEquipoxEscuela")

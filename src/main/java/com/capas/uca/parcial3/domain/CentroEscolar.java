@@ -19,18 +19,49 @@ import javax.validation.constraints.Size;
 import javax.persistence.SequenceGenerator;
 
 @Entity
-@Table(schema="public",name="centroEscolar")
+@Table(schema="public",name="centro_escolar")
 public class CentroEscolar {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="idCentroEscolar")
 	private Integer idCentroEscolar;
+
+	@Column(name="nombre_escuela")
+	private String nombre_escolar;
 	
-	@Column(name="nombre")
-	@Size(max=200, message="El campo sobrepasa la cantidad de 200 caracteres!")
-	@NotEmpty(message="No puede ir vacio!")
-	private String nombre;
+	@Column(name="sector")
+	private Boolean sector;
+	
+	@Column(name="zona")
+	private Boolean zona;
+	
+	@Column(name="direccion")
+	private String Direccion;
+	
+	@Column(name="NIP")
+	private String nip;
+	
+	@Column(name="numero_telefonico")
+	private String numero_telefonico;
+	
+	@Column(name="numero_fax")
+	private String numero_fax;
+	
+	@Column(name="correo_electronico")
+	private String correo_electronico;
+	
+	@Column(name="numero_aula_total")
+	private int numero_aula_total;
+	
+	@Column(name="numero_otros_espacios_total")
+	private int numero_otros_espacios_total;
+	
+	@Column(name="latitud")
+	private double latitud;
+	
+	@Column(name="longitud")
+	private double longitud;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="fkmunicipio")
@@ -39,18 +70,10 @@ public class CentroEscolar {
 	@Transient
 	private Integer fkMunicipio;
 	
-	@Column(name="descripcion")
-	@Size(max=300, message="El campo sobrepasa la cantidad de 300 caracteres!")
-	@NotEmpty(message="No puede ir vacio!")
-	private String descripcion;
-	
-	@Column(name="estado")
-	private Boolean estado;
-	
 	public CentroEscolar() {
 		
-	}
-
+	}	
+	
 	public Integer getIdCentroEscolar() {
 		return idCentroEscolar;
 	}
@@ -60,11 +83,99 @@ public class CentroEscolar {
 	}
 
 	public String getNombre() {
-		return nombre;
+		return nombre_escolar;
 	}
 
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		this.nombre_escolar = nombre;
+	}
+
+	public Boolean getSector() {
+		return sector;
+	}
+
+	public void setSector(Boolean sector) {
+		this.sector = sector;
+	}
+
+	public Boolean getZona() {
+		return zona;
+	}
+
+	public void setZona(Boolean zona) {
+		this.zona = zona;
+	}
+
+	public String getDireccion() {
+		return Direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		Direccion = direccion;
+	}
+
+	public String getNip() {
+		return nip;
+	}
+
+	public void setNip(String nip) {
+		this.nip = nip;
+	}
+
+	public String getNumero_telefonico() {
+		return numero_telefonico;
+	}
+
+	public void setNumero_telefonico(String numero_telefonico) {
+		this.numero_telefonico = numero_telefonico;
+	}
+
+	public String getNumero_fax() {
+		return numero_fax;
+	}
+
+	public void setNumero_fax(String numero_fax) {
+		this.numero_fax = numero_fax;
+	}
+
+	public String getCorreo_electronico() {
+		return correo_electronico;
+	}
+
+	public void setCorreo_electronico(String correo_electronico) {
+		this.correo_electronico = correo_electronico;
+	}
+
+	public int getNumero_aula_total() {
+		return numero_aula_total;
+	}
+
+	public void setNumero_aula_total(int numero_aula_total) {
+		this.numero_aula_total = numero_aula_total;
+	}
+
+	public int getNumero_otros_espacios_total() {
+		return numero_otros_espacios_total;
+	}
+
+	public void setNumero_otros_espacios_total(int numero_otros_espacior_total) {
+		this.numero_otros_espacios_total = numero_otros_espacior_total;
+	}
+
+	public double getLatitud() {
+		return latitud;
+	}
+
+	public void setLatitud(double latitud) {
+		this.latitud = latitud;
+	}
+
+	public double getLongitud() {
+		return longitud;
+	}
+
+	public void setLongitud(double longitud) {
+		this.longitud = longitud;
 	}
 
 	public Municipio getMunicipio() {
@@ -75,33 +186,12 @@ public class CentroEscolar {
 		this.municipio = municipio;
 	}
 
-	public Integer getIdMunicipio() {
+	public Integer getFkMunicipio() {
 		return fkMunicipio;
 	}
 
-	public void setIdMunicipio(Integer idMunicipio) {
-		this.fkMunicipio = idMunicipio;
+	public void setFkMunicipio(Integer fkMunicipio) {
+		this.fkMunicipio = fkMunicipio;
 	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-	public Boolean getEstado() {
-		return estado;
-	}
-
-	public void setEstado(Boolean estado) {
-		this.estado = estado;
-	}
-	
-	public String getDelegateEstado() {
-		return estado ? "Activo":"Inactivo";
-	}
-	
 
 }

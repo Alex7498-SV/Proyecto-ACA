@@ -21,51 +21,125 @@
 		  </div>
 		 </nav>
 	
-		<div class="container formulariosMod materiaForm">
-			<h1 class="center">Formulario de Centro Escolar</h1>
+		<div class="container formulariosMod">
+			<h1 class="center">Centro Escolar</h1>
 			<form th:action="@{/registroCentroEscolarProcesar}" th:object="${centroEscolar}" method="post">
-			<div class="form-group">
+				<div class="form-group">
 					<input type="hidden"
 						class="form-control" id="id" 
 						th:field="*{idCentroEscolar}">
 				</div>
-				<div class="form-group">
-					<label for="nombre">Nombre</label> 
-					<input type="text"
-						class="form-control" id="nombre"
-						th:field="*{nombre}"> 
-					 
-					 <span th:errors="*{nombre}" style="color: yellow;"></span>
-				</div>
-				<div class="form-group">
-					<label for="Select1">Municipio</label> 
-					<select class="form-control" id="Select1" th:field="*{municipio}">
-						<option value="0">Seleccione una opción</option>
-						<option th:each=item:${municipioLista}
-										th:value="${item.idMunicipio}"
-										th:text="${item.nombreMunicipio}">
-					</select>
-					<span th:if="${resultado == 1}" style="color: yellow ">Debe
-								seleccionar un municipio</span>
-				</div>
-				<div class="form-group">
-					<label for="descripcion">Descripción</label>
-					<textarea class="form-control" id="descripcion" rows="3"
-						th:field="*{descripcion}"></textarea>
-						<span th:errors="*{descripcion}" style="color: yellow;"></span>
-				</div>
-				<div class="form-check">
-						<input class="form-check-input" type="checkbox" th:value="true"
-							id="estado" th:field="*{estado}"> <label
-							class="form-check-label" for="estado"> Activado </label>
+				<div class="row">
+					<div class="col-6 form-group">
+						<label for="nombre">Codigo del Centro Escolar</label> 
+						<input type="text"
+							class="form-control" id="nombre"
+							th:field="*{idCentroEscolar}" disabled> 
 					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col form-group">
+						<label for="nombre">Nombre</label> 
+						<input type="text"
+							class="form-control" id="nombre"
+							th:field="*{nombre}" disabled> 
+					</div>
+					<div class="col form-group">
+						<label for="nombre">NPI</label> 
+						<input type="text"
+							class="form-control" id="nombre"
+							th:field="*{nip}" disabled> 
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col form-group">
+						<label for="nombre">Sector</label> 
+						<input type="text"
+							class="form-control" id="nombre"
+							th:value="${sector}" disabled> 
+					</div>
+					<div class="col form-group">
+						<label for="nombre">Zona</label> 
+						<input type="text"
+							class="form-control" id="nombre"
+							th:value="${zona}" disabled> 
+					</div>
+				</div>
+					
+				<div class="row">
+					<div class="col form-group">
+						<label for="nombre" class="form-label">Dirección</label>
+  						<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" th:field="*{direccion}" disabled></textarea>
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col form-group">
+						<label for="nombre">Numero telefonico</label> 
+						<input type="text"
+							class="form-control" id="nombre"
+							th:field="*{numero_telefonico}" disabled> 
+					</div>
+					<div class="col form-group">
+						<label for="nombre">Numero de fax</label> 
+						<input type="text"
+							class="form-control" id="nombre"
+							th:field="*{numero_fax}" disabled> 
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col form-group">
+						<label for="nombre">Correo electronico</label> 
+						<input type="text"
+							class="form-control" id="nombre"
+							th:field="*{correo_electronico}" disabled> 
+					</div>
+					<div class="col form-group">
+						<label for="nombre">Municipio</label> 
+						<input type="text"
+							class="form-control" id="nombre"
+							th:field="*{municipio.nombreMunicipio}" disabled> 
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col form-group">
+						<label for="nombre">Numero de aulas</label> 
+						<input type="text"
+							class="form-control" id="nombre"
+							th:field="*{numero_aula_total}" disabled> 
+					</div>
+					<div class="col form-group">
+						<label for="nombre">Numero de otros espacios</label> 
+						<input type="text"
+							class="form-control" id="nombre"
+							th:field="*{numero_otros_espacios_total}" disabled> 
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col form-group">
+						<label for="nombre">Latitud</label> 
+						<input type="text"
+							class="form-control" id="nombre"
+							th:field="*{latitud}" disabled> 
+					</div>
+					<div class="col form-group">
+						<label for="nombre">Longitud</label> 
+						<input type="text"
+							class="form-control" id="nombre"
+							th:field="*{longitud}" disabled> 
+					</div>
+				</div>
+				
 				<div class="btn-center">
 					<a href="/tablaCentroEscolar" class="btn color-btnSesion">Regresar</a>
-					<button type="submit" class="btn color-btnSesion btnAceptar">Registrar</button>
 					<a id="limpiar" class="btn color-btnSesion">Limpiar</a>
 				</div>
 			</form>
-		</div>
 	</div>
 </body>
 

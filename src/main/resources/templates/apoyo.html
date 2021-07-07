@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Centro Escolar</title>
+<link rel="icon" type="image/png" href="img/icono.ico" />
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	
+		<nav class="navbar navbar-expand-lg navbar-dark bg-menu2"> 
+			<a class="navbar-brand" href="#"><img alt="" src="img/icon.png"></a>
+		  <div style="width: 100%;text-align: right">
+	            <a class="btn btn-secondary btn-light" type="button" aria-haspopup="true" aria-expanded="false" href="/logout"> 
+	                    Cerrar Sesión
+	                  </a>
+		  </div>
+		 </nav>
+	
+		<div class="container formulariosMod">
+			<h1 class="center">Centro Escolar</h1>
+			<form th:action="@{/registroCentroEscolarProcesar}" th:object="${centroEscolar}" method="post">
+				
+				<br>
+				
+				<ul class="nav nav-pills nav-fill">
+				  <li class="nav-item">
+				    <a class="nav-link active" aria-current="page" th:href="@{/apoyo?id=} + *{idCentroEscolar}" >Apoyo</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" th:href="@{/necesidades?id=} + *{idCentroEscolar}" >Necesidades especiales</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" th:href="@{/servicios?id=} + *{idCentroEscolar}" >Servicios</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" th:href="@{/poblacion?id=} + *{idCentroEscolar}"  tabindex="-1">Población Estudiantil</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" th:href="@{/equipos?id=} + *{idCentroEscolar}"  tabindex="-1">Equipos</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" th:href="@{/infraestructura?id=} + *{idCentroEscolar}"  tabindex="-1">Infraestructura</a>
+				  </li>
+				</ul>
+				
+				<br>
+				
+				<div class="info-extra-container">
+					<div class="row">
+						<div class="col-6">
+							<h3>Asistencia Tecnica</h3>
+							<br>
+							<ul th:each=item:${apoyo1}>
+								<li th:text="${item.fkApoyo.nombre_organismo}"></li>
+							</ul>
+						</div>
+						<div class="col-6">
+							<h3>Económico Monetario</h3>
+							<br>
+							<ul th:each=item:${apoyo2}>
+								<li th:text="${item.fkApoyo.nombre_organismo}"></li>
+							</ul>
+						</div>
+					</div>
+					<br>
+					<div class="row">
+						<div class="col-6">
+							<h3>Material didactico</h3>
+							<br>
+							<ul th:each=item:${apoyo3}>
+								<li th:text="${item.fkApoyo.nombre_organismo}"></li>
+							</ul>
+						</div>
+						<div class="col-6">
+							<h3>Mobiliario y equipo</h3>
+							<br>
+							<ul th:each=item:${apoyo4}>
+								<li th:text="${item.fkApoyo.nombre_organismo}"></li>
+							</ul>
+						</div>
+					</div>	
+					<br>
+					<div class="row">
+						<div class="col-6">
+							<h3>Infraestructura</h3>
+							<br>
+							<ul th:each=item:${apoyo5}>
+								<li th:text="${item.fkApoyo.nombre_organismo}"></li>
+							</ul>
+						</div>
+						<div class="col-6">
+							<h3>Remuneracion a Docentes</h3>
+							<br>
+							<ul th:each=item:${apoyo6}>
+								<li th:text="${item.fkApoyo.nombre_organismo}"></li>
+							</ul>
+						</div>
+					</div>				
+					<br>
+					<div class="row">
+						<div class="col-6">
+							<h3>Materiales de construcción</h3>
+							<br>
+							<ul th:each=item:${apoyo7}>
+								<li th:text="${item.fkApoyo.nombre_organismo}"></li>
+							</ul>
+						</div>
+						<div class="col-6">
+							<h3>Alimentos</h3>
+							<br>
+							<ul th:each=item:${apoyo8}>
+								<li th:text="${item.fkApoyo.nombre_organismo}"></li>
+							</ul>
+						</div>
+					</div>				
+				</div>		
+				
+				<div class="btn-center">
+					<a href="/tablaCentroEscolar" class="btn color-btnSesion">Regresar</a>
+				</div>
+			</form>
+	</div>
+</body>
+
+	<script type="text/javascript">
+		var a = document.getElementById("limpiar");
+		a.onclick = limpiar
+		if(document.getElementById("id").value != ""){
+			document.getElementById("limpiar").style.display="none";	
+		}
+		function limpiar(){
+			document.getElementById("Select1").options[0].selected = true;
+			document.getElementById("nombre").value = "";
+			document.getElementById("descripcion").value = "";
+			document.getElementById("estado").checked=0;
+		}
+	</script>
+
+</html>

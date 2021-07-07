@@ -178,3 +178,22 @@ input[type=number] {
     -moz-appearance:textfield;
 
 }
+
+.info-extra-container{
+	width: 80%;
+	padding: 20px;
+	background: white;
+	color: black;
+	margin-left: 10%;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	text-align: center;
+}
+
+.info-extra-container ul{
+	text-align: left;
+}
+
+.info-extra-container h1{
+	font-size: 2em;
+}

@@ -5,10 +5,12 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.stereotype.Service;
 
 import com.capas.uca.parcial3.domain.Poblacion_Estudiantil;
 import com.capas.uca.parcial3.repositorie.Poblacion_EstudiantilRepo;
 
+@Service
 public class PoblacionEstudiantilServiceImpl implements PoblacionEstudiantilService{
 	
 	@Autowired
@@ -20,6 +22,6 @@ public class PoblacionEstudiantilServiceImpl implements PoblacionEstudiantilServ
 	@Override
 	public Poblacion_Estudiantil findOne(Integer id) throws DataAccessException {
 		// TODO Auto-generated method stub
-		return repo.getOne(id);
+		return repo.findP(id); 
 	}
 }

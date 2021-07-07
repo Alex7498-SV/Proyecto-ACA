@@ -23,13 +23,23 @@ import org.springframework.web.servlet.ModelAndView;
 import com.capas.uca.parcial3.domain.Apoyo;
 import com.capas.uca.parcial3.domain.Apoyoxescuela;
 import com.capas.uca.parcial3.domain.CentroEscolar;
+import com.capas.uca.parcial3.domain.EquipoXEscuela;
+import com.capas.uca.parcial3.domain.Infraestructura;
 import com.capas.uca.parcial3.domain.Municipio;
+import com.capas.uca.parcial3.domain.Necesidades;
+import com.capas.uca.parcial3.domain.Poblacion_Estudiantil;
+import com.capas.uca.parcial3.domain.Servicio;
 import com.capas.uca.parcial3.domain.TipoApoyo;
 import com.capas.uca.parcial3.dto.TablaDTO;
 import com.capas.uca.parcial3.service.ApoyoService;
 import com.capas.uca.parcial3.service.ApoyoxescuelaService;
 import com.capas.uca.parcial3.service.CentroEscolarService;
+import com.capas.uca.parcial3.service.EquipoXEscuelaService;
+import com.capas.uca.parcial3.service.InfraestructuraService;
 import com.capas.uca.parcial3.service.MunicipioService;
+import com.capas.uca.parcial3.service.NecesidadesService;
+import com.capas.uca.parcial3.service.PoblacionEstudiantilService;
+import com.capas.uca.parcial3.service.ServicioService;
 import com.capas.uca.parcial3.service.TipoApoyoService;
 
 @Controller
@@ -47,6 +57,16 @@ public class CentroEscolarController {
 	private TipoApoyoService TipoApoyoService;
 	@Autowired
 	private ApoyoxescuelaService ApoyoxescuelaService;
+	@Autowired
+	private PoblacionEstudiantilService PoblacionEstudiantilService;
+	@Autowired
+	private NecesidadesService NecesidadesService;
+	@Autowired
+	private ServicioService ServicioService;
+	@Autowired
+	private InfraestructuraService InfraestructuraService;
+	@Autowired
+	private EquipoXEscuelaService EquipoXEscuelaService;
 	
 
 	/*--------------------------------------------------------------Vistas------------------------------------------------------------*/
@@ -123,6 +143,9 @@ public class CentroEscolarController {
 		
 		CentroEscolar c = CentroEscolarService.findOne(id);		
 		
+		Necesidades necesidades = NecesidadesService.findOneN(id);
+		
+		mav.addObject("necesidades", necesidades);
 		mav.addObject("centroEscolar", c);
 		mav.setViewName("necesidades");
 		return mav;
@@ -134,7 +157,10 @@ public class CentroEscolarController {
 		
 		CentroEscolar c = CentroEscolarService.findOne(id);
 		
+		Servicio servicio = ServicioService.findOneS(id);
+		
 		mav.addObject("centroEscolar", c);
+		mav.addObject("servicio", servicio);
 		mav.setViewName("servicios");
 		return mav;
 	}
@@ -145,7 +171,10 @@ public class CentroEscolarController {
 		
 		CentroEscolar c = CentroEscolarService.findOne(id);
 		
+		Poblacion_Estudiantil poblacion = PoblacionEstudiantilService.findOne(id);
+		
 		mav.addObject("centroEscolar", c);
+		mav.addObject("poblacion", poblacion);
 		mav.setViewName("poblacion");
 		return mav;
 	}
@@ -155,8 +184,10 @@ public class CentroEscolarController {
 		ModelAndView mav = new ModelAndView();
 		
 		CentroEscolar c = CentroEscolarService.findOne(id);
+		List<EquipoXEscuela> equipos = EquipoXEscuelaService.findOne(id);
 		
 		mav.addObject("centroEscolar", c);
+		mav.addObject("equipos", equipos);
 		mav.setViewName("equipos");
 		return mav;
 	}
@@ -167,6 +198,9 @@ public class CentroEscolarController {
 		
 		CentroEscolar c = CentroEscolarService.findOne(id);
 		
+		Infraestructura infraestructura = InfraestructuraService.findOneS(id);
+		
+		mav.addObject("infraestructura", infraestructura);
 		mav.addObject("centroEscolar", c);
 		mav.setViewName("infraestructura");
 		return mav;

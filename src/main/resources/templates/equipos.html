@@ -50,76 +50,31 @@
 				
 				<br>
 				
-				<div class="row">
-					<div class="col-6">
-						<h3>Asistencia Tecnica</h3>
-						<br>
-						<div class="form-check">
-						  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-						  <label class="form-check-label" for="flexCheckChecked">
-						    ONG
-						  </label>
-						</div>
-						<div class="form-check">
-						  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-						  <label class="form-check-label" for="flexCheckChecked">
-						    OG (diferentes al MINED)
-						  </label>
-						</div>
-						<div class="form-check">
-						  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-						  <label class="form-check-label" for="flexCheckChecked">
-						    Organismos de cooperación
-						  </label>
-						</div>
-						<div class="form-check">
-						  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-						  <label class="form-check-label" for="flexCheckChecked">
-						    Empresa privada y/o persona natural
-						  </label>
-						</div>
-						<div class="form-check">
-						  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-						  <label class="form-check-label" for="flexCheckChecked">
-						    No recibe apoyo
-						  </label>
-						</div>
-					</div>
-					<div class="col-6">
-						<h3>Económico Monetario</h3>
-						<br>
-						<div class="form-check">
-						  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-						  <label class="form-check-label" for="flexCheckChecked">
-						    ONG
-						  </label>
-						</div>
-						<div class="form-check">
-						  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-						  <label class="form-check-label" for="flexCheckChecked">
-						    OG (diferentes al MINED)
-						  </label>
-						</div>
-						<div class="form-check">
-						  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-						  <label class="form-check-label" for="flexCheckChecked">
-						    Organismos de cooperación
-						  </label>
-						</div>
-						<div class="form-check">
-						  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-						  <label class="form-check-label" for="flexCheckChecked">
-						    Empresa privada y/o persona natural
-						  </label>
-						</div>
-						<div class="form-check">
-						  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-						  <label class="form-check-label" for="flexCheckChecked">
-						    No recibe apoyo
-						  </label>
-						</div>
-					</div>
-				</div>				
+				<div class="info-extra-container">
+					<h1>Equipos que posee el centro escolar</h1>
+					<br>
+					<table class="table table-striped">
+							<thead>
+							    <tr>
+							      <th scope="col">Nombre del equipo</th>
+							      <th scope="col">Buenas condiciones</th>
+							      <th scope="col">Malas condiciones</th>
+							      <th scope="col">Arrendadas</th>
+							      <th scope="col">Utilizadas</th>
+							    </tr>
+							  </thead>
+							  <tbody>
+							    <tr th:each=item:${equipos}>
+							      <th scope="row" th:text="${item.equipo.nombre_equipo}"></th>
+							      <td th:text="${item.buena_condicion}"></td>
+							      <td th:text="${item.mala_condicion}"></td>
+							      <td th:text="${item.arrendada}"></td>
+							      <td th:text="${item.utilizadas}"></td>
+							    </tr>
+							  </tbody>				  
+					</table>
+				
+				</div>
 				
 				<div class="btn-center">
 					<a href="/tablaCentroEscolar" class="btn color-btnSesion">Regresar</a>

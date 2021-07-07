@@ -53,41 +53,43 @@
 				<div class="info-extra-container">
 					<h1>Servicios que posee el centro escolar </h1>
 					<br>
-					<div class="row">
-						<div class="col-6 form-check">
-						  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-						  <label class="form-check-label" for="flexCheckDefault">
-						    ¿Tiene instalacion electrica?
-						  </label>
+					<form th:object="${servicio}" method="post">
+						<div class="row">
+							<div class="col-6 form-check">
+							  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled th:field="*{instalacion_electrica}">
+							  <label class="form-check-label" for="flexCheckDefault">
+							    ¿Tiene instalacion electrica?
+							  </label>
+							</div>
+							<div class="col-6 form-check">
+							  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled th:field="*{funciona_instalacion_electrica}">
+							  <label class="form-check-label" for="flexCheckDefault">
+							    ¿Funciona la instalacion electrica?
+							  </label>
+							</div>
 						</div>
-						<div class="col-6 form-check">
-						  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-						  <label class="form-check-label" for="flexCheckDefault">
-						    ¿Funciona la instalacion electrica?
-						  </label>
+						<br>
+						<div class="row">
+							<div class="col-4 form-check">
+							  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled th:field="*{servicios_sanitarios}">
+							  <label class="form-check-label" for="flexCheckDefault">
+							    ¿Tiene servicios sanitarios?
+							  </label>
+							</div>
+							<div class="col-4 form-check">
+							  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled th:field="*{computadoras_estudiante}">
+							  <label class="form-check-label" for="flexCheckDefault">
+							    ¿Posee computadoras para los estudiantes?
+							  </label>
+							</div>
+							<div class="col-4 form-check">
+							  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled th:field="*{servicio_internet}">
+							  <label class="form-check-label" for="flexCheckDefault">
+							    ¿Posee servicio de internet?
+							  </label>
+							</div>
 						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-4 form-check">
-						  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-						  <label class="form-check-label" for="flexCheckDefault">
-						    ¿Tiene servicios sanitarios?
-						  </label>
-						</div>
-						<div class="col-4 form-check">
-						  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-						  <label class="form-check-label" for="flexCheckDefault">
-						    ¿Posee computadoras para los estudiantes?
-						  </label>
-						</div>
-						<div class="col-4 form-check">
-						  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-						  <label class="form-check-label" for="flexCheckDefault">
-						    ¿Posee servicio de internet?
-						  </label>
-						</div>
-					</div>
+					</form>
 				</div>			
 				
 				<div class="btn-center">

@@ -197,3 +197,7 @@ input[type=number] {
 .info-extra-container h1{
 	font-size: 2em;
 }
+
+.info-extra-container tbody tr th:first-child {
+	text-align: left;
+}

@@ -49,38 +49,39 @@
 				</ul>
 				
 				<br>				
-				
 				<div class="info-extra-container">
 					<h1>Total de alumnos del centro escolar</h1>
 					<br>
-					<div class="row">
-						<div class="col-6">
-						  <label for="exampleFormControlInput1" class="form-label">Alumnos de parvularia</label>
-						  <input type="email" class="form-control" id="exampleFormControlInput1">
+					<form th:object="${poblacion}" method="post">
+						<div class="row">
+							<div class="col-6">
+							  <label for="exampleFormControlInput1" class="form-label">Alumnos de parvularia</label>
+							  <input type="email" class="form-control" id="exampleFormControlInput1" th:value="*{parvularia}" disabled>
+							</div>
+							<div class="col-6">
+							  <label for="exampleFormControlInput1" class="form-label">Alumnos de ciclo I</label>
+							  <input type="email" class="form-control" id="exampleFormControlInput1" th:value="*{ciclo_I}" disabled>
+							</div>
 						</div>
-						<div class="col-6">
-						  <label for="exampleFormControlInput1" class="form-label">Alumnos de ciclo I</label>
-						  <input type="email" class="form-control" id="exampleFormControlInput1">
+						<br>
+						<div class="row">
+							<div class="col-6">
+							  <label for="exampleFormControlInput1" class="form-label">Alumnos de ciclo II</label>
+							  <input type="email" class="form-control" id="exampleFormControlInput1" th:value="*{ciclo_II}" disabled>
+							</div>
+							<div class="col-6">
+							  <label for="exampleFormControlInput1" class="form-label">Alumnos de ciclo III</label>
+							  <input type="email" class="form-control" id="exampleFormControlInput1" th:value="*{ciclo_III}" disabled>
+							</div>
 						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-6">
-						  <label for="exampleFormControlInput1" class="form-label">Alumnos de ciclo II</label>
-						  <input type="email" class="form-control" id="exampleFormControlInput1">
+						<br>
+						<div class="row">
+							<div class="col-6">
+							  <label for="exampleFormControlInput1" class="form-label">Alumnos de eduación media</label>
+							  <input type="email" class="form-control" id="exampleFormControlInput1" th:value="*{educacion_media}" disabled>
+							</div>
 						</div>
-						<div class="col-6">
-						  <label for="exampleFormControlInput1" class="form-label">Alumnos de ciclo III</label>
-						  <input type="email" class="form-control" id="exampleFormControlInput1">
-						</div>
-					</div>
-					<br>
-					<div class="row">
-						<div class="col-6">
-						  <label for="exampleFormControlInput1" class="form-label">Alumnos de eduación media</label>
-						  <input type="email" class="form-control" id="exampleFormControlInput1">
-						</div>
-					</div>
+					</form>
 				</div>
 				
 				<div class="btn-center">

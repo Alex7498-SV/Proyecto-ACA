@@ -53,32 +53,34 @@
 				<div class="info-extra-container">
 					<h1>Condiciones de accesibilidad para estudiantes con necesidades especiales</h1>
 					<br>
-					<div class="row">
-						<div class="col-3 form-check">
-						  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-						  <label class="form-check-label" for="flexCheckDefault">
-						    ¿Posee rampa?
-						  </label>
+					<form th:object="${necesidades}" method="post">
+						<div class="row">
+							<div class="col-3 form-check">
+							  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{rampa}" disabled>
+							  <label class="form-check-label" for="flexCheckDefault">
+							    ¿Posee rampa?
+							  </label>
+							</div>
+							<div class="col-3 form-check">
+							  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{pasamanos}" disabled>
+							  <label class="form-check-label" for="flexCheckDefault">
+							    ¿Posee pasamanos?
+							  </label>
+							</div>
+							<div class="col-3 form-check">
+							  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{sanitariosEspeciales}" disabled>
+							  <label class="form-check-label" for="flexCheckDefault">
+							    ¿Posee sanitarios especiales?
+							  </label>
+							</div>
+							<div class="col-3 form-check">
+							  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{noPosee}" disabled>
+							  <label class="form-check-label" for="flexCheckDefault">
+							    No posee
+							  </label>
+							</div>
 						</div>
-						<div class="col-3 form-check">
-						  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-						  <label class="form-check-label" for="flexCheckDefault">
-						    ¿Posee pasamanos?
-						  </label>
-						</div>
-						<div class="col-3 form-check">
-						  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-						  <label class="form-check-label" for="flexCheckDefault">
-						    ¿Posee sanitarios especiales?
-						  </label>
-						</div>
-						<div class="col-3 form-check">
-						  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-						  <label class="form-check-label" for="flexCheckDefault">
-						    No posee
-						  </label>
-						</div>
-					</div>
+					</form>
 				</div>			
 				
 				<div class="btn-center">

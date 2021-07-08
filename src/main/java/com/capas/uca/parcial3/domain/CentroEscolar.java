@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
@@ -70,10 +71,21 @@ public class CentroEscolar {
 	@Transient
 	private Integer fkMunicipio;
 	
+	@OneToOne(mappedBy = "fkCentroEscolar")
+    private Infraestructura infraestructura;
+	
 	public CentroEscolar() {
 		
 	}	
 	
+	public Infraestructura getInfraestructura() {
+		return infraestructura;
+	}
+
+	public void setInfraestructura(Infraestructura infraestructura) {
+		this.infraestructura = infraestructura;
+	}
+
 	public Integer getIdCentroEscolar() {
 		return idCentroEscolar;
 	}

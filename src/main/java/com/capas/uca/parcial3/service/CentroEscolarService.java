@@ -23,6 +23,8 @@ public interface CentroEscolarService {
 	
 	//public List<CentroEscolar> filter(String search) throws DataAccessException;
 	
+	List<CentroEscolar> filterCE();
+	
 	public List<CentroEscolar>filter(
 			boolean arr1,boolean arr2,boolean arr3,boolean arr4,boolean arr5,
 			boolean arr6,boolean arr7,boolean arr8,boolean arr9,boolean arr10,boolean arr11,

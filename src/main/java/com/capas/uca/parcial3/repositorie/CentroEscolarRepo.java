@@ -8,12 +8,13 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 
 import com.capas.uca.parcial3.domain.CentroEscolar;
 import com.capas.uca.parcial3.domain.Municipio;
 
-public interface CentroEscolarRepo extends JpaRepository<CentroEscolar, Integer> {
+public interface CentroEscolarRepo extends JpaRepository<CentroEscolar, Integer>, JpaSpecificationExecutor<CentroEscolar>{
 	
 	@Query(nativeQuery = true, value = "select * from public.CENTRO_ESCOLAR where LOWER(nombre_escuela) like ?1%")
 	public Page<CentroEscolar>mostrarTodos(String search, Pageable page) throws DataAccessException;

@@ -281,5 +281,18 @@ public class CentroEscolarController {
 		maincontroller.sesionAdmin(request, mav);
 		return mav;
 	}
+	
+	@RequestMapping("/filterce")
+	public ModelAndView filterce(HttpSession request) {
+																	    //1   2		3		4	5		6	7		8	9		10	11		12	13		14	15		16	17		18	19		20	21		22	23		24	25		26	27		28
+		List<CentroEscolar> centroEscolar = CentroEscolarService.filterCE();
+		System.out.println(Arrays.toString(centroEscolar.toArray()));
+		System.out.print("sdrf");
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("tablaCentroEscolar");
+		request.setMaxInactiveInterval(0);
+		maincontroller.sesionAdmin(request, mav);
+		return mav;
+	}
 
 }

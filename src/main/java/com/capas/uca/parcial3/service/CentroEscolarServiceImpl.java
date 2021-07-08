@@ -15,12 +15,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.capas.uca.parcial3.domain.CentroEscolar;
+import com.capas.uca.parcial3.domain.Infraestructura;
 import com.capas.uca.parcial3.domain.Servicio;
 import com.capas.uca.parcial3.repositorie.CentroEscolarRepo;
+import com.capas.uca.parcial3.specification.CentroEscolarSpec;
 
 @Service
 public class CentroEscolarServiceImpl implements CentroEscolarService{
@@ -112,6 +115,15 @@ public class CentroEscolarServiceImpl implements CentroEscolarService{
 		return result;
 	}
 	*/
+	
+	@Override
+	public List<CentroEscolar> filterCE() {
+		// TODO Auto-generated method stub
+		
+		  Specification<CentroEscolar> filmSpecifications = CentroEscolarSpec.filterCE();
+	        return Repo.findAll(filmSpecifications);
+		
+	}
 
 	@Override
 	public List<CentroEscolar> filter(boolean arr1, boolean arr2, boolean arr3, boolean arr4, boolean arr5,

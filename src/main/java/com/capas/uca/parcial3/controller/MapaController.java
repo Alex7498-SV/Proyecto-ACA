@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.capas.uca.parcial3.domain.Municipio;
+
 @Controller
 public class MapaController {
 	
@@ -32,4 +34,22 @@ public class MapaController {
 		mav.setViewName("mapa");
 		return mav;
 	}
+	
+	@RequestMapping("/cargarCentrosEscolares")
+	public @ResponseBody List<String[]> cargarMunicipios(@RequestParam Integer draw) {
+		List<Municipio> municipio = null;
+		try {
+			municipio = MunicipioService.findDepartamento(draw);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		List<String[]> data = new ArrayList<>();
+
+		for (Municipio u : municipio) {
+			data.add(new String[] { u.getIdMunicipio().toString(), u.getNombreMunicipio() });
+		}
+		return data;
+	}
+	
 }

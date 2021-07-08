@@ -181,4 +181,52 @@ input[type=number] {
 
 /*------------------------------MAPA-------------------------------**/
 
+#map {
+	bottom: 0; 
+	width: 100%; height: 100%; 
+	border-radius: 10px 10px;
+	margin-top: 2%;
+	margin-right: 0;
+	margin-left: 2%;
+	}
+
+#mapContainer{
+	height: 80vh;
+}
+ 
+#filtrosContainer{
+	height: 80vh;
+}
+ 
+#filtros{
+	margin-top: 2%;
+	margin-right: 2%;
+	margin-left: 0;
+	border-radius: 10px 10px;
+	padding: 0;
+}
+
+
 .info-extra-container{
+	
+		width: 80%;
+	padding: 20px;
+	background: white;
+	color: black;
+	margin-left: 10%;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	text-align: center;
+}
+
+.info-extra-container ul{
+	text-align: left;
+}
+
+.info-extra-container h1{
+	font-size: 2em;
+}
+
+.info-extra-container tbody tr th:first-child {
+	text-align: left;
+}

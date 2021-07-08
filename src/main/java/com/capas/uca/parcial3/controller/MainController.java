@@ -115,6 +115,7 @@ public class MainController {
 		return data;
 	}
 	
+	
 	public ModelAndView sesionAdmin(HttpSession request, ModelAndView mav) {
 		Usuario user = null;
 		user = (Usuario) request.getAttribute("user");

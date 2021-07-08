@@ -11,6 +11,6 @@ import com.capas.uca.parcial3.domain.EquipoXEscuela;
 public interface EquipoXEscuelaRepo extends JpaRepository<EquipoXEscuela, Integer> {
 	
 	
-	@Query(nativeQuery = true, value = "select * from public.EquipoxEscuela")
-	public List<EquipoXEscuela>mostrarTodos() throws DataAccessException;
+	@Query(nativeQuery = true, value = "select * from EQUIPOXESCUELA where fkcentroescolar = ?1")
+	public List<EquipoXEscuela>mostrarTodos(Integer centroEscolar) throws DataAccessException;
 }

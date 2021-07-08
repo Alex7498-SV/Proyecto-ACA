@@ -271,7 +271,7 @@ public class CentroEscolarController {
 	@RequestMapping("/test")
 	public ModelAndView filterTest(HttpSession request) {
 																	    //1   2		3		4	5		6	7		8	9		10	11		12	13		14	15		16	17		18	19		20	21		22	23		24	25		26	27		28
-		List<CentroEscolar> centroEscolar = CentroEscolarService.filter(false, false, false, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true);
+		List<CentroEscolar> centroEscolar = CentroEscolarService.filter(true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true);
 		//List<CentroEscolar> c = CentroEscolarService.filter("sdfsd");
 		System.out.println(Arrays.toString(centroEscolar.toArray()));
 		System.out.print("sdrf");

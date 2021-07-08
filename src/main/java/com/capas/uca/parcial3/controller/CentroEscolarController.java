@@ -79,6 +79,15 @@ public class CentroEscolarController {
 		maincontroller.sesionAdmin(request, mav);
 		return mav;
 	}
+	
+	@RequestMapping("/filtrar")
+	public ModelAndView filtrar(HttpSession request) {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("filtro");
+		request.setMaxInactiveInterval(0);
+		maincontroller.sesionAdmin(request, mav);
+		return mav;
+	}
 
 	@RequestMapping("/editarCentroEscolar")
 	public ModelAndView editarCentroEscolar(@RequestParam Integer id) {

@@ -35,9 +35,13 @@
 		</nav>
 	
 		<div class="container formulariosMod">
-			<h1 class="center">Centro Escolar</h1>
-			<hr id="linea-form">
 			<form th:action="@{/registroCentroEscolarProcesar}" th:object="${centroEscolar}" method="post">
+				<div class="row">
+					<div class="col-6">
+						<label for="exampleFormControlInput1" class="form-label">Nombre de Centro escolar</label>
+						<input type="email" class="form-control" id="exampleFormControlInput1" th:value="*{nombre}" disabled>	
+					</div>
+				</div>
 				
 				<br>
 				
@@ -76,27 +80,21 @@
 							  </label>
 							</div>
 							<div class="col-6 form-check">
-							  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled th:field="*{funciona_instalacion_electrica}">
-							  <label class="form-check-label" for="flexCheckDefault">
-							    ¿Funciona la instalacion electrica?
-							  </label>
-							</div>
-						</div>
-						<br>
-						<div class="row">
-							<div class="col-4 form-check">
 							  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled th:field="*{servicios_sanitarios}">
 							  <label class="form-check-label" for="flexCheckDefault">
 							    ¿Tiene servicios sanitarios?
 							  </label>
 							</div>
-							<div class="col-4 form-check">
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-6 form-check">
 							  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled th:field="*{computadoras_estudiante}">
 							  <label class="form-check-label" for="flexCheckDefault">
 							    ¿Posee computadoras para los estudiantes?
 							  </label>
 							</div>
-							<div class="col-4 form-check">
+							<div class="col-6 form-check">
 							  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" disabled th:field="*{servicio_internet}">
 							  <label class="form-check-label" for="flexCheckDefault">
 							    ¿Posee servicio de internet?

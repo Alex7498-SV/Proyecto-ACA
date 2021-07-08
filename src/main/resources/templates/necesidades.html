@@ -35,9 +35,13 @@
 		</nav>
 	
 		<div class="container formulariosMod">
-			<h1 class="center">Centro Escolar</h1>
-			<hr id="linea-form">
 			<form th:action="@{/registroCentroEscolarProcesar}" th:object="${centroEscolar}" method="post">
+				<div class="row">
+					<div class="col-6">
+						<label for="exampleFormControlInput1" class="form-label">Nombre de Centro escolar</label>
+						<input type="email" class="form-control" id="exampleFormControlInput1" th:value="*{nombre}" disabled>	
+					</div>
+				</div>
 				
 				<br>
 				

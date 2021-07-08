@@ -35,9 +35,13 @@
 		</nav>
 	
 		<div class="container formulariosMod">
-			<h1 class="center">Centro Escolar</h1>
-			<hr id="linea-form">
 			<form th:action="@{/registroCentroEscolarProcesar}" th:object="${centroEscolar}" method="post">
+				<div class="row">
+					<div class="col-6">
+						<label for="exampleFormControlInput1" class="form-label">Nombre de Centro escolar</label>
+						<input type="email" class="form-control" id="exampleFormControlInput1" th:value="*{nombre}" disabled>	
+					</div>
+				</div>
 				
 				<br>
 				
@@ -68,137 +72,159 @@
 					<h1>Infraestructura complementaria del centro escolar</h1>
 					<br>
 					<form th:object="${infraestructura}" method="post">
-						<div class="row">
-							<div class="col-4 form-check">
-							  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{biblioteca}" disabled>
-							  <label class="form-check-label" for="flexCheckDefault">
-							    Biblioteca
-							  </label>
-							</div>
-							<div class="col-4 form-check">
-							  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{centro_computo}" disabled>
-							  <label class="form-check-label" for="flexCheckDefault">
-							    Centro de computo o CRA
-							  </label>
-							</div>
-							<div class="col-4 form-check">
-							  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{laboratorio_ciencia}" disabled>
-							  <label class="form-check-label" for="flexCheckDefault">
-							    Laboratorio de ciencias
-							  </label>
-							</div>
-						</div>
-						<br>
-						<div class="row">
-							<div class="col-4 form-check">
-							  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{aula_apoyo_educativo}" disabled>
-							  <label class="form-check-label" for="flexCheckDefault">
-							    Aula de apoyo educativo
-							  </label>
-							</div>
-							<div class="col-4 form-check">
-							  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{cancha_futbol}" disabled>
-							  <label class="form-check-label" for="flexCheckDefault">
-							    Cancha propia de futbol
-							  </label>
-							</div>
-							<div class="col-4 form-check">
-							  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{cancha_basquetbol}" disabled>
-							  <label class="form-check-label" for="flexCheckDefault">
-							    Cancha propia de basquetbol
-							  </label>
-							</div>
-						</div>
-						<br>
-						<div class="row">
-							<div class="col-4 form-check">
-							  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{laboratorio_ingles}" disabled>
-							  <label class="form-check-label" for="flexCheckDefault">
-							    Laboratorio para ingles
-							  </label>
-							</div>
-							<div class="col-4 form-check">
-							  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{granja_agricola}" disabled>
-							  <label class="form-check-label" for="flexCheckDefault">
-							    Granja agricola
-							  </label>
-							</div>
-							<div class="col-4 form-check">
-							  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{area_administrativa}" disabled>
-							  <label class="form-check-label" for="flexCheckDefault">
-							    Area administrativa
-							  </label>
-							</div>
-						</div>
-						<br>
-						<div class="row">
-							<div class="col-4 form-check">
-							  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"th:field="*{sala_profesores}" disabled>
-							  <label class="form-check-label" for="flexCheckDefault">
-							    Sala de profesores
-							  </label>
-							</div>
-							<div class="col-4 form-check">
-							  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{clinica_para_estudiantes}" disabled>
-							  <label class="form-check-label" for="flexCheckDefault">
-							    Clinica para atender estudiantes y maestros
-							  </label>
-							</div>
-							<div class="col-4 form-check">
-							  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{talleres_bachillerato_industrial}" disabled>
-							  <label class="form-check-label" for="flexCheckDefault">
-							    Talleres para bachillerato industrial
-							  </label>
-							</div>
-						</div>
-						<br>
-						<div class="row">
-							<div class="col-4 form-check">
-							  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{clinica_bachillerato_en_salud}" disabled>
-							  <label class="form-check-label" for="flexCheckDefault">
-							    Clinica para bachillerato en salud
-							  </label>
-							</div>
-							<div class="col-4 form-check">
-							  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{salon_usos_multiples}" disabled>
-							  <label class="form-check-label" for="flexCheckDefault">
-							    Salon de usos múltiples
-							  </label>
-							</div>
-							<div class="col-4 form-check">
-							  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{espacio_recreativo}" disabled>
-							  <label class="form-check-label" for="flexCheckDefault">
-							    Espacios recreativos
-							  </label>
-							</div>
-						</div>
-						<br>
-						<div class="row">
-							<div class="col-3 form-check">
-							  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{comedor}" disabled>
-							  <label class="form-check-label" for="flexCheckDefault">
-							    Comedor
-							  </label>
-							</div>
-							<div class="col-3 form-check">
-							  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{bodega}" disabled>
-							  <label class="form-check-label" for="flexCheckDefault">
-							    Bodega
-							  </label>
-							</div>
-							<div class="col-3 form-check">
-							  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{cocina}" disabled>
-							  <label class="form-check-label" for="flexCheckDefault">
-							    Cocina
-							  </label>
-							</div>
-							<div class="col-3 form-check">
-							  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{cocina_bodigo}" disabled>
-							  <label class="form-check-label" for="flexCheckDefault">
-							    Cocina - bodega
-							  </label>
-							</div>
-						</div>
+						<table class="table table-striped tabla-i">
+								<thead>
+								    <tr>
+								      <th scope="col">Nombre</th>
+								      <th scope="col">Tiene</th>
+								    </tr>
+								  </thead>
+								  <tbody>
+								    <tr>
+								      <th scope="row">Biblioteca</th>
+								      <td>
+								      	<div class="col-4 form-check">
+										  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{biblioteca}" disabled>
+										</div>
+								      </td>
+								    </tr>
+								    <tr>
+								      <th scope="row">Centro de computo o CRA</th>
+								      <td>
+								      	<div class="col-4 form-check">
+										  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{centro_computo}" disabled>
+										</div>
+								      </td>
+								    </tr>
+								    <tr>
+								      <th scope="row">Laboratorio de ciencias</th>
+								      <td>
+								      	<div class="col-4 form-check">
+										  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{laboratorio_ciencia}" disabled>
+										</div>
+								      </td>
+								    </tr>
+								    <tr>
+								      <th scope="row">Aula de apoyo educativo</th>
+								      <td>
+								      	<div class="col-4 form-check">
+										  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{aula_apoyo_educativo}" disabled>
+										</div>
+								      </td>
+								    </tr>
+								    <tr>
+								      <th scope="row">Cancha propia de futbol</th>
+								      <td>
+								      	<div class="col-4 form-check">
+										  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{cancha_futbol}" disabled>
+										</div>
+								      </td>
+								    </tr>
+								    <tr>
+								      <th scope="row">Cancha propia de basquetbol</th>
+								      <td>
+								      	<div class="col-4 form-check">
+										  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{cancha_basquetbol}" disabled>
+										</div>
+								      </td>
+								    </tr>
+								    <tr>
+								      <th scope="row">Laboratorio para ingles</th>
+								      <td>
+								      	<div class="col-4 form-check">
+										  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{laboratorio_ingles}" disabled>
+										</div>
+								      </td>
+								    </tr>
+								    <tr>
+								      <th scope="row">Granja agricola</th>
+								      <td>
+								      	<div class="col-4 form-check">
+										  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{granja_agricola}" disabled>
+										</div>
+								      </td>
+								    </tr>
+								    <tr>
+								      <th scope="row">Area administrativa</th>
+								      <td>
+								      	<div class="col-4 form-check">
+										  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{area_administrativa}" disabled>
+										</div>
+								      </td>
+								    </tr>
+								    <tr>
+								      <th scope="row">Sala de profesores</th>
+								      <td>
+								      	<div class="col-4 form-check">
+										  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"th:field="*{sala_profesores}" disabled>
+										</div>
+								      </td>
+								    </tr>
+								    <tr>
+								      <th scope="row">Clinica para atender estudiantes y maestros</th>
+								      <td>
+								      	<div class="col-4 form-check">
+										  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{clinica_para_estudiantes}" disabled>
+										</div>
+								      </td>
+								    </tr>
+								    <tr>
+								      <th scope="row">Talleres para bachillerato industrial</th>
+								      <td>
+								      	<div class="col-4 form-check">
+										  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{talleres_bachillerato_industrial}" disabled>
+										</div>
+								      </td>
+								    </tr>
+								    <tr>
+								      <th scope="row">Salon de usos múltiples</th>
+								      <td>
+								      	<div class="col-4 form-check">
+										  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{salon_usos_multiples}" disabled>
+										</div>
+								      </td>
+								    </tr>
+								    <tr>
+								      <th scope="row">Espacios recreativos</th>
+								      <td>
+								      	<div class="col-4 form-check">
+										  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{espacio_recreativo}" disabled>
+										</div>
+								      </td>
+								    </tr>
+								    <tr>
+								      <th scope="row">Comedor</th>
+								      <td>
+								      	<div class="col-3 form-check">
+										  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{comedor}" disabled>
+										</div>
+								      </td>
+								    </tr>
+								    <tr>
+								      <th scope="row">Bodega</th>
+								      <td>
+								      	<div class="col-3 form-check">
+										  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{bodega}" disabled>
+										</div>
+								      </td>
+								    </tr>
+								    <tr>
+								      <th scope="row">Cocina</th>
+								      <td>
+								      	<div class="col-3 form-check">
+										  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{cocina}" disabled>
+										</div>
+								      </td>
+								    </tr>
+								    <tr>
+								      <th scope="row">Cocina - bodega</th>
+								      <td>
+								      	<div class="col-3 form-check">
+										  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{cocina_bodigo}" disabled>
+								      </td>
+								    </tr>
+								  </tbody>				  
+						</table>
 					</form>
 				</div>
 				

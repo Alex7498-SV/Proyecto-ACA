@@ -133,7 +133,7 @@ public class CentroEscolarController {
 		List<Apoyoxescuela> apoyoxescuela7 = ApoyoxescuelaService.buscarTipoApoyo(7, id);
 		List<Apoyoxescuela> apoyoxescuela8 = ApoyoxescuelaService.buscarTipoApoyo(8, id);
 		
-		mav.addObject("centroEscolar", c);
+		mav.addObject("centroEscolar", c); 
 		mav.addObject("apoyo1", apoyoxescuela);
 		mav.addObject("apoyo2", apoyoxescuela2);
 		mav.addObject("apoyo3", apoyoxescuela3);

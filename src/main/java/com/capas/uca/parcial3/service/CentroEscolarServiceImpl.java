@@ -22,6 +22,7 @@ import org.springframework.util.StringUtils;
 import com.capas.uca.parcial3.domain.CentroEscolar;
 import com.capas.uca.parcial3.domain.Infraestructura;
 import com.capas.uca.parcial3.domain.Servicio;
+import com.capas.uca.parcial3.dto.filtroDTO;
 import com.capas.uca.parcial3.repositorie.CentroEscolarRepo;
 import com.capas.uca.parcial3.specification.CentroEscolarSpec;
 
@@ -117,10 +118,10 @@ public class CentroEscolarServiceImpl implements CentroEscolarService{
 	*/
 	
 	@Override
-	public List<CentroEscolar> filterCE() {
+	public List<CentroEscolar> filterCE(filtroDTO filtro) {
 		// TODO Auto-generated method stub
 		
-		  Specification<CentroEscolar> filmSpecifications = CentroEscolarSpec.filterCE();
+		  Specification<CentroEscolar> filmSpecifications = CentroEscolarSpec.filterCE(filtro);
 	        return Repo.findAll(filmSpecifications);
 		
 	}

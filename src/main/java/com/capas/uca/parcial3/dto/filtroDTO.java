@@ -31,6 +31,8 @@ public class filtroDTO {
 	private Integer fil27;
 	private Integer fil28;
 	
+	
+	
 	public Integer getFil1() {
 		return fil1;
 	}
@@ -254,6 +256,24 @@ public class filtroDTO {
 	public void setFil28(Integer fil28) {
 		this.fil28 = fil28;
 	}
+	
+	public Boolean toBool(Integer a){
+		if(!(a==null)) {
+			
+			switch (a) {
+			case 0:
+				return false;
+				
+
+			default:
+				return true;
+			}
+			
+		}else {
+			return null;
+		}
+		
+	};
 	
 	public filtroDTO() {
 		

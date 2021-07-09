@@ -118,8 +118,8 @@ public class CentroEscolarServiceImpl implements CentroEscolarService{
 			boolean arr6, boolean arr7, boolean arr8, boolean arr9, boolean arr10, boolean arr11, boolean arr12,
 			boolean arr13, boolean arr14, boolean arr15, boolean arr16, boolean arr17, boolean arr18, boolean arr19,
 			boolean arr20, boolean arr21, boolean arr22, boolean arr23, boolean arr24, boolean arr25, boolean arr26,
-			boolean arr27, boolean arr28) throws DataAccessException {
+			boolean arr27) throws DataAccessException {
 		// TODO Auto-generated method stub
-		return Repo.filter(arr1, arr2, arr3, arr4, arr5, arr6, arr7, arr8, arr9, arr10, arr11, arr12, arr13, arr14, arr15, arr16, arr17, arr18, arr19, arr20, arr21, arr22, arr23, arr24, arr25, arr26, arr27, arr28);
+		return Repo.filter(arr1, arr2, arr3, arr4, arr5, arr6, arr7, arr8, arr9, arr10, arr11, arr12, arr13, arr14, arr15, arr16, arr17, arr18, arr19, arr20, arr21, arr22, arr23, arr24, arr25, arr26, arr27);
 	}
 }

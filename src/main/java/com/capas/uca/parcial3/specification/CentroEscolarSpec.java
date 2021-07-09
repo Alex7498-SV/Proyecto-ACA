@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.criteria.Join;
+import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Predicate;
 
 import org.springframework.data.jpa.domain.Specification;
@@ -25,27 +26,23 @@ public final class CentroEscolarSpec {
 	}
 
 	public static Specification<CentroEscolar> filterCE(filtroDTO filtro) {
-		return (root, query, builder) -> {
-			
-			
-			
-			
 
-			
-			
-			Join<CentroEscolar, Infraestructura> CentroInfraJoin = root.join("infraestructura");
-			
-			Join<CentroEscolar, Servicio> CentroServicioInfJoin = root.join("servicio");
-			Join<CentroEscolar, Necesidades> CentroNecesidades = root.join("necesidades");
-			
+		return removeBad().and(filterCeInfra(filtro)).and(filterCeServi(filtro)).and(filterCeNecesidades(filtro));
+	
+	}
+
+	public static Specification<CentroEscolar> filterCeServi(filtroDTO filtro) {
+		return (root, query, builder) -> {
+
+			Join<CentroEscolar, Servicio> CentroServicioInfJoin = root.join("servicio",JoinType.LEFT);
+
 			List<Predicate> list = new ArrayList<Predicate>();
-			Boolean filter = null;
 
 			if (!(filtro.getFil1() == null)) {
 				list.add(builder.equal(CentroServicioInfJoin.get(Servicio_.INSTALACION_ELECTRICA),
 						filtro.toBool(filtro.getFil1())));
 			}
-		
+
 			if (!(filtro.getFil2() == null)) {
 				list.add(builder.equal(CentroServicioInfJoin.get(Servicio_.SERVICIOS_SANITARIOS),
 						filtro.toBool(filtro.getFil2())));
@@ -59,114 +56,140 @@ public final class CentroEscolarSpec {
 						filtro.toBool(filtro.getFil4())));
 			}
 
+			Predicate[] p = new Predicate[list.size()];
+
+			return builder.and(list.toArray(p));
+		};
+	}
+
+	public static Specification<CentroEscolar> filterCeNecesidades(filtroDTO filtro) {
+		return (root, query, builder) -> {
+
+			Join<CentroEscolar, Necesidades> CentroNecesidades = root.join("necesidades",JoinType.LEFT);
+
+			List<Predicate> list = new ArrayList<Predicate>();
+
 			// Necesidades filters
-			if (!(filtro.getFil5() == null)) {
-				list.add(builder.equal(CentroNecesidades.get(Necesidades_.RAMPA), filtro.toBool(filtro.getFil5())));
+			if (!(filtro.getFil24() == null)) {
+				list.add(builder.equal(CentroNecesidades.get(Necesidades_.RAMPA), filtro.toBool(filtro.getFil24())));
 			}
-			if (!(filtro.getFil6() == null)) {
-				list.add(builder.equal(CentroNecesidades.get(Necesidades_.PASAMANOS), filtro.toBool(filtro.getFil6())));
+			if (!(filtro.getFil25() == null)) {
+				list.add(builder.equal(CentroNecesidades.get(Necesidades_.PASAMANOS), filtro.toBool(filtro.getFil25())));
 			}
-			if (!(filtro.getFil7() == null)) {
+			if (!(filtro.getFil26() == null)) {
 				list.add(builder.equal(CentroNecesidades.get(Necesidades_.SANITARIOS_ESPECIALES),
+						filtro.toBool(filtro.getFil26())));
+			}
+			if (!(filtro.getFil27() == null)) {
+				list.add(builder.equal(CentroNecesidades.get(Necesidades_.NO_POSEE), filtro.toBool(filtro.getFil27())));
+			}
+
+			Predicate[] p = new Predicate[list.size()];
+			return builder.and(list.toArray(p));
+		};
+	}
+
+	public static Specification<CentroEscolar> removeBad() {
+		return (root, query, builder) -> {
+			Predicate[] p = { builder.notEqual(root.get(CentroEscolar_.LATITUD), 0.0),
+					builder.notEqual(root.get(CentroEscolar_.LONGITUD), 0.0) };
+			return builder.and(p);
+
+		};
+
+	}
+
+	public static Specification<CentroEscolar> filterCeInfra(filtroDTO filtro) {
+		return (root, query, builder) -> {
+
+			Join<CentroEscolar, Infraestructura> CentroInfraJoin = root.join("infraestructura",JoinType.LEFT);
+
+			List<Predicate> list = new ArrayList<Predicate>();
+
+			// infraestructura filters
+			if (!(filtro.getFil5() == null)) {
+				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.BIBLIOTECA),
+						filtro.toBool(filtro.getFil5())));
+			}
+
+			if (!(filtro.getFil6() == null)) {
+				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.CENTRO_COMPUTO),
+						filtro.toBool(filtro.getFil6())));
+			}
+
+			if (!(filtro.getFil7() == null)) {
+				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.LABORATORIO_CIENCIA),
 						filtro.toBool(filtro.getFil7())));
 			}
 			if (!(filtro.getFil8() == null)) {
-				list.add(builder.equal(CentroNecesidades.get(Necesidades_.NO_POSEE), filtro.toBool(filtro.getFil8())));
+				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.AULA_APOYO_EDUCATIVO),
+						filtro.toBool(filtro.getFil8())));
 			}
-
-			// infraestructura filters
 			if (!(filtro.getFil9() == null)) {
-				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.BIBLIOTECA),
+				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.CANCHA_FUTBOL),
 						filtro.toBool(filtro.getFil9())));
 			}
-
 			if (!(filtro.getFil10() == null)) {
-				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.CENTRO_COMPUTO),
+				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.CANCHA_BASQUETBOL),
 						filtro.toBool(filtro.getFil10())));
 			}
-
 			if (!(filtro.getFil11() == null)) {
-				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.LABORATORIO_CIENCIA),
+				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.LABORATORIO_INGLES),
 						filtro.toBool(filtro.getFil11())));
 			}
 			if (!(filtro.getFil12() == null)) {
-				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.AULA_APOYO_EDUCATIVO),
+				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.GRANJA_AGRICOLA),
 						filtro.toBool(filtro.getFil12())));
 			}
 			if (!(filtro.getFil13() == null)) {
-				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.CANCHA_FUTBOL),
+				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.AREA_ADMINISTRATIVA),
 						filtro.toBool(filtro.getFil13())));
 			}
 			if (!(filtro.getFil14() == null)) {
-				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.CANCHA_BASQUETBOL),
+				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.SALA_PROFESORES),
 						filtro.toBool(filtro.getFil14())));
 			}
 			if (!(filtro.getFil15() == null)) {
-				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.LABORATORIO_INGLES),
+				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.CLINICA_PARA_ESTUDIANTES),
 						filtro.toBool(filtro.getFil15())));
 			}
 			if (!(filtro.getFil16() == null)) {
-				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.GRANJA_AGRICOLA),
+				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.TALLERES_BACHILLERATO_INDUSTRIAL),
 						filtro.toBool(filtro.getFil16())));
 			}
 			if (!(filtro.getFil17() == null)) {
-				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.AREA_ADMINISTRATIVA),
+				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.CLINICA_BACHILLERATO_EN_SALUD),
 						filtro.toBool(filtro.getFil17())));
 			}
 			if (!(filtro.getFil18() == null)) {
-				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.SALA_PROFESORES),
+				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.SALON_USOS_MULTIPLES),
 						filtro.toBool(filtro.getFil18())));
 			}
 			if (!(filtro.getFil19() == null)) {
-				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.CLINICA_PARA_ESTUDIANTES),
+				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.ESPACIO_RECREATIVO),
 						filtro.toBool(filtro.getFil19())));
 			}
 			if (!(filtro.getFil20() == null)) {
-				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.TALLERES_BACHILLERATO_INDUSTRIAL),
-						filtro.toBool(filtro.getFil20())));
+				list.add(
+						builder.equal(CentroInfraJoin.get(Infraestructura_.COMEDOR), filtro.toBool(filtro.getFil20())));
 			}
 			if (!(filtro.getFil21() == null)) {
-				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.CLINICA_BACHILLERATO_EN_SALUD),
-						filtro.toBool(filtro.getFil21())));
+				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.BODEGA), filtro.toBool(filtro.getFil21())));
 			}
+
 			if (!(filtro.getFil22() == null)) {
-				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.SALON_USOS_MULTIPLES),
-						filtro.toBool(filtro.getFil22())));
+				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.COCINA), filtro.toBool(filtro.getFil22())));
 			}
+
 			if (!(filtro.getFil23() == null)) {
-				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.ESPACIO_RECREATIVO),
+				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.COCINA_BODIGO),
 						filtro.toBool(filtro.getFil23())));
 			}
-			if (!(filtro.getFil24() == null)) {
-				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.COMEDOR), filtro.toBool(filtro.getFil24())));
-			}
-			if (!(filtro.getFil25() == null)) {
-				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.BODEGA), filtro.toBool(filtro.getFil25())));
-			}
-
-			if (!(filtro.getFil26() == null)) {
-				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.COCINA), filtro.toBool(filtro.getFil26())));
-			}
-
-			if (!(filtro.getFil27() == null)) {
-				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.COCINA_BODIGO),
-						filtro.toBool(filtro.getFil27())));
-			}
-			
-			
-			list.add(builder.notEqual(root.get(CentroEscolar_.LATITUD),0.0 ));
-			list.add(builder.notEqual(root.get(CentroEscolar_.LATITUD),0.0 ));
-			list.add(builder.notEqual(root.get(CentroEscolar_.LATITUD),0.0 ));
-			
-			list.add(builder.notEqual(root.get(CentroEscolar_.LONGITUD),0.0 ));
-			list.add(builder.notEqual(root.get(CentroEscolar_.LONGITUD),0.0 ));
-			list.add(builder.notEqual(root.get(CentroEscolar_.LONGITUD),0.0 ));
-			
-		
 
 			Predicate[] p = new Predicate[list.size()];
 
 			return builder.and(list.toArray(p));
 		};
 	}
+
 }

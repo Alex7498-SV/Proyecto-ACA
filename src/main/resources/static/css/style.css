@@ -303,3 +303,11 @@ hr{
   	text-align: left;
 }
 
+.info-filtro{
+	float: right;
+	border: black 2px dotted;
+	padding: 20px;
+	margin-top: -370px;
+	margin-right: 50px;
+	width: 600px;
+}

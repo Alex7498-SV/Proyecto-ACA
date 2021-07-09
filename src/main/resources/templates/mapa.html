@@ -5,7 +5,7 @@
 <title>Mapa</title>
 
 <!-- Hojas de estilo de bootstrap y propio -->
-<link rel="icon" type="image/png" href="img/icono.ico" />
+<link rel="icon" type="image/png" href="img/icon.png" />
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
@@ -32,7 +32,7 @@
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">
 			<ul class="navbar-nav">
 				<li class="nav-item"><a class="nav-link"
-					href="tablaCentroEscolar">Regresar</a></li>
+					href="filtrar">Regresar</a></li>
 					
 			</ul>
 		</div>
@@ -88,11 +88,13 @@
 		var i = 0;
 		variable.forEach(
 			function(escuelas){
-				/*console.log(document.getElementsByClassName("longitud")[i].innerText +"  "+ document.getElementsByClassName("latitud")[i].innerText);*/
-				var marker = L.marker([document.getElementsByClassName("longitud")[i].innerText, document.getElementsByClassName("latitud")[i].innerText], {icon: myIcon}).addTo(map);
-				marker.bindPopup(document.getElementsByClassName("nombre")[i].innerText);
-
-				i += 1;
+				var longitud = document.getElementsByClassName("longitud")[i].innerText;
+				var latitud = document.getElementsByClassName("latitud")[i].innerText; 
+				if(i <= 1000){
+					var marker = L.marker([longitud, latitud], {icon: myIcon}).addTo(map);
+					marker.bindPopup(document.getElementsByClassName("nombre")[i].innerText);	
+				}
+				i += 1;	
 			}	
 		)
 

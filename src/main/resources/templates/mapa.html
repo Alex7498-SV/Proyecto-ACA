@@ -20,6 +20,10 @@
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
    crossorigin=""></script>
+   
+   <style>
+   #tabla{display: none;} 
+   </style>
 </head>
 <body>
 
@@ -27,14 +31,9 @@
 		<a class="navbar-brand" href="#"><img alt="" src="img/icon.png"></a>
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">
 			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link active"
-					href="tablaUsuario">Usuarios</a></li>
-				</li>
 				<li class="nav-item"><a class="nav-link"
-					href="tablaCentroEscolar">Centros Escolares</a></li>
+					href="tablaCentroEscolar">Regresar</a></li>
 					
-				<li class="nav-item"><a class="nav-link"
-					href="/mapa">Mapa</a></li>
 			</ul>
 		</div>
 		<div class="form-inline">
@@ -52,55 +51,51 @@
 		
 	
 	</div>
+	<table id="tabla" class="table table-striped">
+							<thead>
+							    <tr>
+							      <th scope="col">Nombre del equipo</th>
+							      <th scope="col">Buenas condiciones</th>
+							      <th scope="col">Malas condiciones</th>
+							    </tr>
+							  </thead>
+							  <tbody>
+							    <tr th:each=item:${escuelas}>
+							      <th class= "nombre" scope="row" th:text="${item.nombre}"></th>
+							      <td class="longitud" th:text="${item.latitud}"></td>
+							      <td class="latitud" th:text="${item.longitud}"></td>
+							    </tr>
+							  </tbody>				  
+	</table>
 	<!-- <div id = "map"></div>  -->
 	
 	<script type="text/javascript">
+	
+		
 		var map = L.map('map').setView([13.835401, -88.850759], 8.50);
 		
 		L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=hyDpsRpWwvGRHsgpRo0O', {
 			attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
 		}).addTo(map);
 		
-		function coordenadas(){
-			var map1 = document.getElementById("map").value;
-			var myIcon = L.icon({
-			    iconUrl: 'img/pin.png',
-			    iconSize: [20, 30],
-			    iconAnchor: [22, 30],
-			    popupAnchor: [-20, -26]
-			});
-			var i = 0;
-			$.ajax({
-				type : "POST",
-				"serverSide" : true,
-				url : "./cargarCentrosEscolaresMapa",
-				data : {
-					draw : map1
-				},
-				success : function(r) {
-					$.each(r, 
-							function(key) {
-								if(r[key][0] == 0 && r[key][1] == 0){
-									console.log("error");
-								}
-								else if(i == 700){
-									return false;
-								}
-								else{
-									var marker = L.marker([r[key][0], r[key][1]],{icon: myIcon}).addTo(map);
-									marker.bindPopup(r[key][2]);
-
-								}
-								i += 1;
-							});
-				},
-				error : function(data) {
-					alert('error');
-				}
-			})
-		}
+		var myIcon = L.icon({
+		    iconUrl: 'img/pin.png',
+		    iconSize: [20, 30],
+		    iconAnchor: [22, 30],
+		    popupAnchor: [-20, -26]});
 		
-		coordenadas();
+		var variable = document.querySelectorAll("tbody tr");
+		var i = 0;
+		variable.forEach(
+			function(escuelas){
+				/*console.log(document.getElementsByClassName("longitud")[i].innerText +"  "+ document.getElementsByClassName("latitud")[i].innerText);*/
+				var marker = L.marker([document.getElementsByClassName("longitud")[i].innerText, document.getElementsByClassName("latitud")[i].innerText], {icon: myIcon}).addTo(map);
+				marker.bindPopup(document.getElementsByClassName("nombre")[i].innerText);
+
+				i += 1;
+			}	
+		)
+
 	</script>
 	
 </body>	

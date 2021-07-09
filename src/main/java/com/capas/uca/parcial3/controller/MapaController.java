@@ -43,6 +43,12 @@ public class MapaController {
 		List<CentroEscolar> centroEscolar = centroEscolarService.filterCE(filtrado);
 		ModelAndView mav = new ModelAndView();
 		
+		/*List<String[]> data = new ArrayList<>();
+
+		for (CentroEscolar u : centroEscolar) {
+			data.add(new String[] {Double.toString(u.getLatitud()), Double.toString(u.getLongitud()), u.getNombre()});
+		}
+		*/
 		mav.addObject("escuelas", centroEscolar);
 	//	mav.addObject("equipos", equipos);
 		mav.setViewName("mapa");
@@ -55,19 +61,22 @@ public class MapaController {
 	}
 	
 	@RequestMapping("/cargarCentrosEscolaresMapa")
-	public @ResponseBody List<String[]> cargarCentrosEscolaresMapa() {
-		List<CentroEscolar> centroescolar = null;
+	public @ResponseBody List<String[]> cargarCentrosEscolaresMapa(@RequestParam List<CentroEscolar> centroescolar) {
+		
+		/*
 		try {
 			centroescolar = centroEscolarService.findAll();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
-
+		}*/
+		
 		List<String[]> data = new ArrayList<>();
 
 		for (CentroEscolar u : centroescolar) {
 			data.add(new String[] {Double.toString(u.getLatitud()), Double.toString(u.getLongitud()), u.getNombre()});
 		}
+		System.out.println(data.get(0).toString());
+		
 		return data;
 	}
 	

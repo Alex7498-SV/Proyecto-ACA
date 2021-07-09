@@ -37,7 +37,7 @@ function datosTabla(tabla, mensaje, rutaBtn, extra){
 	            "targets": 0,
 	            "data": null,
 	            "searchable": false,
-	            "defaultContent": "<button class='btn btn-info' title='"+mensaje+"' id='i'><i class='fa fa-pencil-alt'></i></button>"
+	            "defaultContent": "<button class='btn btn-tabla' title='"+mensaje+"' id='i'><i class='fa fa-pencil-alt'></i></button>"
 	        }]
 	    });
 		$('#tabla tbody').on( 'click', '#i', function () {
@@ -62,7 +62,7 @@ function datosTabla2(tabla, mensaje, rutaBtn, extra){
 	            "targets": 0,
 	            "data": null,
 	            "searchable": false,
-	            "defaultContent": "<button class='btn btn-info' title='"+mensaje+"' id='i'><i class='fas fa-school'></i></button>  <button class='btn btn-info' title='Mas información' id='i2'><i class='far fa-question-circle'></i></button>"
+	            "defaultContent": "<button class='btn btn-tabla' title='"+mensaje+"' id='i'><i class='fas fa-school'></i></button>  <button class='btn btn-tabla2' title='Mas información' id='i2'><i class='far fa-question-circle'></i></button>"
 	        }]
 	    });
 		$('#tabla tbody').on( 'click', '#i', function () {

@@ -74,10 +74,42 @@ public class CentroEscolar {
 	@OneToOne(mappedBy = "fkCentroEscolar")
     private Infraestructura infraestructura;
 	
+	@OneToOne(mappedBy = "fkCentroEscolar")
+    private Servicio servicio;
+	
+	@OneToOne(mappedBy = "fkCentroEscolar")
+    private Necesidades necesidades;
+	
 	public CentroEscolar() {
 		
 	}	
 	
+	
+	
+	public Servicio getServicio() {
+		return servicio;
+	}
+
+
+
+	public void setServicio(Servicio servicio) {
+		this.servicio = servicio;
+	}
+
+
+
+	public Necesidades getNecesidades() {
+		return necesidades;
+	}
+
+
+
+	public void setNecesidades(Necesidades necesidades) {
+		this.necesidades = necesidades;
+	}
+
+
+
 	public Infraestructura getInfraestructura() {
 		return infraestructura;
 	}

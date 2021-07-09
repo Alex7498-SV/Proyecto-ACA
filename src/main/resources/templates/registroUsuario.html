@@ -5,7 +5,7 @@
 <title>Usuario</title>
 
 <!-- Hojas de estilo de bootstrap y propio -->
-<link rel="icon" type="image/png" href="img/icono.ico" />
+<link rel="icon" type="image/png" href="img/icon.png" />
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
@@ -18,17 +18,31 @@
 </head>
 <body>
 	
-	<nav class="navbar navbar-expand-lg navbar-dark bg-menu2"> 
-	  <a class="navbar-brand" href="#"><img alt="" src="img/icon.png"></a>
-	  <div style="width: 100%;text-align: right" th:if="${tipoF == 1}">
-            <a class="btn btn-secondary btn-light" type="button" aria-haspopup="true" aria-expanded="false" href="/logout"> 
-                    Cerrar Sesión
-                  </a>
-	  </div>
-	 </nav>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-menu"> 
+			<a class="navbar-brand" href="#"><img alt="" src="img/icon.png"></a>
+		  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+		    <ul class="navbar-nav">
+		      <li class="nav-item">
+		        <a class="nav-link" href="tablaUsuario">Usuarios</a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" href="tablaCentroEscolar">Centros Escolares</a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link" href="filtrar">Mapa de centros escolares</a>
+		      </li>
+		    </ul>
+		  </div>
+		  <div class="form-inline">
+	            <a class="btn btn-secondary btn-light" type="button" aria-haspopup="true" aria-expanded="false" href="/logout"> 
+	                    Cerrar Sesión
+	                  </a>
+		  </div>
+		</nav>
 	
 	<div class="container formulariosMod">
-		<h1 class="center">Formulario de usuario</h1>
+		<h1 class="center">Usuario</h1>
+		<hr id="linea-form">
 		<form th:action="@{/ingresarUsuario}" th:object="${usuario}" method="post">
 			<div class="form-group">
 				<input type="hidden" class="form-control" id="id" th:field="*{idUsuario}"> 
@@ -142,25 +156,19 @@
 
 			<div class="form-check" th:if="${tipoF == 1}">
 				<input class="form-check-input" type="checkbox" th:value="true"
-					id="estado" th:field="*{estado}"> <label
+					id="estado" th:field="*{estado}" > <label
 					class="form-check-label" for="estado"> Activado </label>
 			</div>
 
 			<div class="btn-center">
-					<a href="/tablaUsuario" class="btn color-btnSesion">Regresar</a>
-					<button type="submit" class="btn color-btnSesion btnAceptar">Registrar</button>
-					<a id="limpiar" class="btn color-btnSesion">Limpiar</a>
+					<a href="/tablaUsuario" class="btn color-btnSesion btn-center btn-regresar">Regresar</a>
+					<button type="submit" class="btn color-btnSesion btnAceptar btn-center btn-tabla">Registrar</button>
 				</div>
 		</form>
 	</div>
 </body>	
 	
 	<script type="text/javascript">
-		var a = document.getElementById("limpiar");
-		a.onclick = limpiar
-		if(document.getElementById("id").value != ""){
-			document.getElementById("limpiar").style.display="none";	
-		}
 		function limpiar(){
 			document.getElementById("nombre").value = "";
 			document.getElementById("apellido").value = "";

@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Filtro</title>
+
+<!-- Hojas de estilo de bootstrap y propio -->
+<link rel="icon" type="image/png" href="img/icon.png" />
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="css/style.css">
+
+<!-- Bootstrap core JavaScript-->
+<link href="css/fontawesome-free/css/all.min.css" rel="stylesheet"
+	type="text/css">
+<script src="js/bootstrap.bundle.min.js"></script>
+
+<!-- Page level plugin JavaScript-->
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script
+	src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script src="js/dataTables.bootstrap4.js"></script>
+
+<!-- Llenado de tablas -->
+<script src="js/scriptsParcial.js" type="text/javascript"></script>
+<script type="text/javascript">
+	mostrarTabla(3);
+</script>
+
+</head>
+<body class="tablas-ventana">
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-menu">
+		<a class="navbar-brand" href="#"><img alt="" src="img/icon.png"></a>
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link"
+					href="tablaUsuario">Usuarios</a></li>
+				</li>
+				<li class="nav-item"><a class="nav-link"
+					href="tablaCentroEscolar">Centros Escolares</a></li>
+				<li class="nav-item">
+			        <a class="nav-link active" href="filtrar">Mapa de centros escolares</a>
+			      </li>
+			</ul>
+		</div>
+		<div class="form-inline">
+			<a class="btn btn-secondary btn-light" type="button"
+				aria-haspopup="true" aria-expanded="false" href="/logout">
+				Cerrar Sesión </a>
+		</div>
+	</nav>
+	
+	<div class="container tablas center filtro">
+		<h1 class="center">Filtros para el mapa</h1>
+		<hr>
+		<form th:action="@{/test}" th:object="${filtrado}" method="post">
+			<div class="row">
+				<div class="col-4">
+					<h2>Infraestructura</h2>
+					<br>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{fil5}">
+						<label class="form-check-label" for="flexCheckDefault">
+							Biblioteca
+						</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{fil6}">
+						<label class="form-check-label" for="flexCheckDefault">
+							Centro de computo o CRA
+						</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{fil7}">
+						<label class="form-check-label" for="flexCheckDefault">
+							Laboratorio de ciencias
+						</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{fil8}">
+						<label class="form-check-label" for="flexCheckDefault">
+							Aula de apoyo educativo
+						</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{fil9}">
+						<label class="form-check-label" for="flexCheckDefault">
+							Cancha propia de fútbol
+						</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"th:field="*{fil10}">
+						<label class="form-check-label" for="flexCheckDefault">
+							Cancha propia de basquetbol
+						</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{fil11}">
+						<label class="form-check-label" for="flexCheckDefault">
+							Laboratorio de ingles
+						</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{fil12}">
+						<label class="form-check-label" for="flexCheckDefault">
+							Granja agricola
+						</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{fil13}">
+						<label class="form-check-label" for="flexCheckDefault">
+							Area administrativa
+						</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{fil14}">
+						<label class="form-check-label" for="flexCheckDefault">
+							Sala de profesores
+						</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{fil15}">
+						<label class="form-check-label" for="flexCheckDefault">
+							Clinica para atender a estudiantes y maestros
+						</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{fil16}">
+						<label class="form-check-label" for="flexCheckDefault">
+							Talleres para bachillerato industrial
+						</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{fil17}">
+						<label class="form-check-label" for="flexCheckDefault">
+							Clinica para bachillerato en salud
+						</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{fil18}">
+						<label class="form-check-label" for="flexCheckDefault">
+							Salón de usos multiples
+						</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{fil19}">
+						<label class="form-check-label" for="flexCheckDefault">
+							Espacio recreativo (para futbol, basquetbol, volibol o recreo)
+						</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{fil20}">
+						<label class="form-check-label" for="flexCheckDefault">
+							Comedor
+						</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{fil21}">
+						<label class="form-check-label" for="flexCheckDefault">
+							Bodega
+						</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{fil22}">
+						<label class="form-check-label" for="flexCheckDefault">
+							Cocina
+						</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{fil23}">
+						<label class="form-check-label" for="flexCheckDefault">
+							Cocina - bodega
+						</label>
+					</div>
+				</div>
+				<div class="col-4">
+					<h2>Servicios que posee</h2>
+					<br>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{fil1}">
+						<label class="form-check-label" for="flexCheckDefault">
+							Instalación electrica
+						</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{fil2}">
+						<label class="form-check-label" for="flexCheckDefault">
+							Servicios sanitarios
+						</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{fil3}">
+						<label class="form-check-label" for="flexCheckDefault">
+							Computadoras para los estudiantes
+						</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{fil4}">
+						<label class="form-check-label" for="flexCheckDefault">
+							Servicio de internet
+						</label>
+					</div>
+				</div>
+				<div class="col-4">
+					<h2>Necesidades especiales</h2>
+					<br>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{fil26}">
+						<label class="form-check-label" for="flexCheckDefault">
+							Rampa
+						</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{fil24}">
+						<label class="form-check-label" for="flexCheckDefault">
+							Pasamanos
+						</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{fil25}">
+						<label class="form-check-label" for="flexCheckDefault">
+							Sanitarios Especiales
+						</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" th:field="*{fil27}">
+						<label class="form-check-label" for="flexCheckDefault">
+							No posee
+						</label>
+					</div>
+				</div>
+				<br>
+				<div class="btn-filtro">
+					<button type="button" class="btn btn-tabla">Mapa completo</button>
+					<button type="submit" class="btn btn-tabla2">Filtrar</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+<script type="text/javascript">
+
+var $check = $("input[type=checkbox]");
+var el;
+
+$check.data('checked', 0).on('click', function() {
+
+    el = $(this);
+
+    switch (el.data('checked')) {
+      case 0:
+        el.data('checked', 1);
+        el.prop('indeterminate', true);
+        $("input[type=checkbox]").val(1);
+        console.log('null');
+        break;
+
+      case 1:
+        el.data('checked', 2);
+        el.prop('indeterminate', false);
+        el.prop('checked', true);
+        $("input[type=checkbox]").val(0);
+        console.log('true');
+        break;
+
+      default:
+        el.data('checked', 0);
+        el.prop('indeterminate', false);
+        el.prop('checked', false);
+        $("input[type=checkbox]").val(2);
+        console.log('false');
+    }
+  });
+</script>
+
+</body>
+</html>

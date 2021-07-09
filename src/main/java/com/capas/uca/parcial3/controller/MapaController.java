@@ -37,20 +37,9 @@ public class MapaController {
 	
 	@RequestMapping("/mapa")
 	public ModelAndView filterTest(HttpSession request, @ModelAttribute filtroDTO filtrado, BindingResult result) {
-																	    //1   2		3		4	5		6	7		8	9		10	11		12	13		14	15		16	17		18	19		20	21		22	23		24	25		26	27		28
-		//List<CentroEscolar> centroEscolar = CentroEscolarService.filter(filtrado.getFil1(), filtrado.getFil2(), filtrado.getFil3(), filtrado.getFil4(), filtrado.getFil4(), filtrado.getFil6(), filtrado.getFil7(), filtrado.getFil8(), filtrado.getFil9(), filtrado.getFil10(), filtrado.getFil11(), filtrado.getFil12(), filtrado.getFil13(), filtrado.getFil14(), filtrado.getFil15(), filtrado.getFil16(), filtrado.getFil17(), filtrado.getFil18(), filtrado.getFil19(), filtrado.getFil20(), filtrado.getFil21(), filtrado.getFil22(), filtrado.getFil23(), filtrado.getFil24(), filtrado.getFil25(), filtrado.getFil26(), filtrado.getFil27());
-		//List<CentroEscolar> c = CentroEscolarService.filter("sdfsd");
 		List<CentroEscolar> centroEscolar = centroEscolarService.filterCE(filtrado);
 		ModelAndView mav = new ModelAndView();
-		
-		/*List<String[]> data = new ArrayList<>();
-
-		for (CentroEscolar u : centroEscolar) {
-			data.add(new String[] {Double.toString(u.getLatitud()), Double.toString(u.getLongitud()), u.getNombre()});
-		}
-		*/
 		mav.addObject("escuelas", centroEscolar);
-	//	mav.addObject("equipos", equipos);
 		mav.setViewName("mapa");
 		
 		

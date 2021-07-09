@@ -25,30 +25,27 @@ public final class CentroEscolarSpec {
 	}
 
 	public static Specification<CentroEscolar> filterCE(filtroDTO filtro) {
-		/*
-		 * if (CollectionUtils.isEmpty(categories)) { return null; }
-		 */
 		return (root, query, builder) -> {
+			
+			
+			
+			
 
+			
+			
 			Join<CentroEscolar, Infraestructura> CentroInfraJoin = root.join("infraestructura");
+			
 			Join<CentroEscolar, Servicio> CentroServicioInfJoin = root.join("servicio");
 			Join<CentroEscolar, Necesidades> CentroNecesidades = root.join("necesidades");
-			// Join<CentroEscolar, Necesidades>
-			// CentroNecesiSIJoin.join(Infraestructura_.FK_CENTRO_ESCOLAR);
-
+			
 			List<Predicate> list = new ArrayList<Predicate>();
-
 			Boolean filter = null;
 
-			// servicio filters
 			if (!(filtro.getFil1() == null)) {
 				list.add(builder.equal(CentroServicioInfJoin.get(Servicio_.INSTALACION_ELECTRICA),
 						filtro.toBool(filtro.getFil1())));
 			}
-			/*
-			 * if(true) { list.add(builder.equal(CentroServicioInfJoin.get(Servicio_.
-			 * FUNCIONA_INSTALACION_ELECTRICA),false )); }
-			 */
+		
 			if (!(filtro.getFil2() == null)) {
 				list.add(builder.equal(CentroServicioInfJoin.get(Servicio_.SERVICIOS_SANITARIOS),
 						filtro.toBool(filtro.getFil2())));
@@ -155,6 +152,17 @@ public final class CentroEscolarSpec {
 				list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.COCINA_BODIGO),
 						filtro.toBool(filtro.getFil27())));
 			}
+			
+			
+			list.add(builder.notEqual(root.get(CentroEscolar_.LATITUD),0.0 ));
+			list.add(builder.notEqual(root.get(CentroEscolar_.LATITUD),0.0 ));
+			list.add(builder.notEqual(root.get(CentroEscolar_.LATITUD),0.0 ));
+			
+			list.add(builder.notEqual(root.get(CentroEscolar_.LONGITUD),0.0 ));
+			list.add(builder.notEqual(root.get(CentroEscolar_.LONGITUD),0.0 ));
+			list.add(builder.notEqual(root.get(CentroEscolar_.LONGITUD),0.0 ));
+			
+		
 
 			Predicate[] p = new Predicate[list.size()];
 

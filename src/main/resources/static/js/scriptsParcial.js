@@ -176,6 +176,32 @@ function centroEscolar(){
 	})
 }
 
+function coordenadas(){
+	var map = document.getElementById("map").value;
+	$.ajax({
+		type : "POST",
+		"serverSide" : true,
+		url : "./cargarCentrosEscolaresMapa",
+		data : {
+			draw : map
+		},
+		success : function(r) {
+			$('#municipio').empty();
+			$("<option/>").val(0).text(
+					"Seleccione una opción").appendTo(
+					"#municipio");
+			$.each(r, 
+					function(key) {
+						console.log(r[key][0]);
+						/*L.marker([r[key][0], r[key][1]).addTo(map); */
+					});
+		},
+		error : function(data) {
+			alert('error');
+		}
+	})
+}
+
 
 function calcularEdad(fecha) {
     var hoy = new Date();

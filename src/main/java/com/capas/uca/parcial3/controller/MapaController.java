@@ -20,13 +20,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.capas.uca.parcial3.domain.CentroEscolar;
 import com.capas.uca.parcial3.domain.Municipio;
+import com.capas.uca.parcial3.service.CentroEscolarService;
+import com.capas.uca.parcial3.service.UsuarioService;
 
 @Controller
 public class MapaController {
 	
 	@Autowired
 	private MainController maincontroller;
+	
+	@Autowired
+	private CentroEscolarService centroEscolarService;
 	
 	@RequestMapping("/mapa")
 	public ModelAndView mapa(HttpSession request) {
@@ -35,19 +41,19 @@ public class MapaController {
 		return mav;
 	}
 	
-	@RequestMapping("/cargarCentrosEscolares")
-	public @ResponseBody List<String[]> cargarMunicipios(@RequestParam Integer draw) {
-		List<Municipio> municipio = null;
+	@RequestMapping("/cargarCentrosEscolaresMapa")
+	public @ResponseBody List<String[]> cargarCentrosEscolaresMapa() {
+		List<CentroEscolar> centroescolar = null;
 		try {
-			municipio = MunicipioService.findDepartamento(draw);
+			centroescolar = centroEscolarService.findAll();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		List<String[]> data = new ArrayList<>();
 
-		for (Municipio u : municipio) {
-			data.add(new String[] { u.getIdMunicipio().toString(), u.getNombreMunicipio() });
+		for (CentroEscolar u : centroescolar) {
+			data.add(new String[] {Double.toString(u.getLatitud()), Double.toString(u.getLongitud()), u.getNombre()});
 		}
 		return data;
 	}

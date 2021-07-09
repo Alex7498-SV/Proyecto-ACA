@@ -50,35 +50,61 @@
 			<div id = "map"></div>
 		</div>
 		
-		<div class="col" id = "filtrosContainer">
-			<div class="card text-center" id = "filtros">
-			  <div class="card-header">
-			    Filtros
-			  </div>
-			  <div class="card-body">
-			    <h5 class="card-title">Special title treatment</h5>
-			    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-			    <a href="#" class="btn btn-primary">Go somewhere</a>
-			  </div>
-			</div>			
-		</div>
 	
 	</div>
 	<!-- <div id = "map"></div>  -->
 	
-	<script>
+	<script type="text/javascript">
 		var map = L.map('map').setView([13.835401, -88.850759], 8.50);
 		
 		L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=hyDpsRpWwvGRHsgpRo0O', {
 			attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
 		}).addTo(map);
+		
+		function coordenadas(){
+			var map1 = document.getElementById("map").value;
+			var myIcon = L.icon({
+			    iconUrl: 'img/pin.png',
+			    iconSize: [20, 30],
+			    iconAnchor: [22, 30],
+			    popupAnchor: [-20, -26]
+			});
+			var i = 0;
+			$.ajax({
+				type : "POST",
+				"serverSide" : true,
+				url : "./cargarCentrosEscolaresMapa",
+				data : {
+					draw : map1
+				},
+				success : function(r) {
+					$.each(r, 
+							function(key) {
+								if(r[key][0] == 0 && r[key][1] == 0){
+									console.log("error");
+								}
+								else if(i == 700){
+									return false;
+								}
+								else{
+									var marker = L.marker([r[key][0], r[key][1]],{icon: myIcon}).addTo(map);
+									marker.bindPopup(r[key][2]);
+
+								}
+								i += 1;
+							});
+				},
+				error : function(data) {
+					alert('error');
+				}
+			})
+		}
+		
+		coordenadas();
 	</script>
 	
 </body>	
 
-<script src="js/scriptsParcial.js" type="text/javascript"></script>
-<script type="text/javascript">
-	combobox(0);
-</script>
+
 
 </html>

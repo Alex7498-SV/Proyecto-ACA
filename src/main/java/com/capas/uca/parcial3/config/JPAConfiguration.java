@@ -47,7 +47,7 @@ public class JPAConfiguration {
 		dataSource.setUrl("jdbc:postgresql://localhost:5432/escuelas");
 		
 		dataSource.setUsername("victor");
-		//dataSource.setPassword("canela01");
+		//dataSource.setPassword("");
 		
 		return dataSource;
 	}

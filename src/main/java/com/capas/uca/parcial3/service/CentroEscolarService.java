@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.capas.uca.parcial3.domain.CentroEscolar;
+import com.capas.uca.parcial3.dto.filtroDTO;
 
 
 public interface CentroEscolarService {
@@ -22,6 +23,8 @@ public interface CentroEscolarService {
 	public Integer countCE(String search) throws DataAccessException;
 	
 	//public List<CentroEscolar> filter(String search) throws DataAccessException;
+	
+	List<CentroEscolar> filterCE(filtroDTO filtro);
 	
 	public List<CentroEscolar>filter(
 			boolean arr1,boolean arr2,boolean arr3,boolean arr4,boolean arr5,

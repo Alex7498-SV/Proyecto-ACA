@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Mapa</title>
+
+<!-- Hojas de estilo de bootstrap y propio -->
+<link rel="icon" type="image/png" href="img/icono.ico" />
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+
+<!-- Scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-menu">
+		<a class="navbar-brand" href="#"><img alt="" src="img/icon.png"></a>
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link active"
+					href="tablaUsuario">Usuarios</a></li>
+				</li>
+				<li class="nav-item"><a class="nav-link"
+					href="tablaCentroEscolar">Centros Escolares</a></li>
+					
+				<li class="nav-item"><a class="nav-link"
+					href="/mapa">Mapa</a></li>
+			</ul>
+		</div>
+		<div class="form-inline">
+			<a class="btn btn-secondary btn-light" type="button"
+				aria-haspopup="true" aria-expanded="false" href="/logout">
+				Cerrar Sesión </a>
+		</div>
+	</nav>
+	
+	<div class="row">
+	
+		<div class = "col " id="mapContainer">
+			<div id = "map"></div>
+		</div>
+		
+	
+	</div>
+	<!-- <div id = "map"></div>  -->
+	
+	<script type="text/javascript">
+		var map = L.map('map').setView([13.835401, -88.850759], 8.50);
+		
+		L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=hyDpsRpWwvGRHsgpRo0O', {
+			attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
+		}).addTo(map);
+		
+		function coordenadas(){
+			var map1 = document.getElementById("map").value;
+			var myIcon = L.icon({
+			    iconUrl: 'img/pin.png',
+			    iconSize: [20, 30],
+			    iconAnchor: [22, 30],
+			    popupAnchor: [-20, -26]
+			});
+			var i = 0;
+			$.ajax({
+				type : "POST",
+				"serverSide" : true,
+				url : "./cargarCentrosEscolaresMapa",
+				data : {
+					draw : map1
+				},
+				success : function(r) {
+					$.each(r, 
+							function(key) {
+								if(r[key][0] == 0 && r[key][1] == 0){
+									console.log("error");
+								}
+								else if(i == 700){
+									return false;
+								}
+								else{
+									var marker = L.marker([r[key][0], r[key][1]],{icon: myIcon}).addTo(map);
+									marker.bindPopup(r[key][2]);
+
+								}
+								i += 1;
+							});
+				},
+				error : function(data) {
+					alert('error');
+				}
+			})
+		}
+		
+		coordenadas();
+	</script>
+	
+</body>	
+
+
+
+</html>

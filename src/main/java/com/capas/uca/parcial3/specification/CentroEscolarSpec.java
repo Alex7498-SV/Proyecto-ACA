@@ -39,15 +39,18 @@ public final class CentroEscolarSpec {
             //   Join<CentroEscolar, Necesidades> CentroNecesiSIJoin.join(Infraestructura_.FK_CENTRO_ESCOLAR);
             
             List<Predicate> list = new ArrayList<Predicate>();
-           
+            
+            
+           Boolean filter= null;
             
             //servicio filters
-            if(true) {
-         	  list.add(builder.equal(CentroServicioInfJoin.get(Servicio_.INSTALACION_ELECTRICA),false ));	
+            if(filter) {
+         	  list.add(builder.equal(CentroServicioInfJoin.get(Servicio_.INSTALACION_ELECTRICA),filter ));	
          	}
+            /*
             if(true) {
            	  list.add(builder.equal(CentroServicioInfJoin.get(Servicio_.FUNCIONA_INSTALACION_ELECTRICA),false ));	
-           	}
+           	}*/
             if(true) {
            	  list.add(builder.equal(CentroServicioInfJoin.get(Servicio_.SERVICIOS_SANITARIOS),false ));	
            	}
@@ -59,7 +62,7 @@ public final class CentroEscolarSpec {
            	}
             
             
-            
+            //Necesidades filters
             if(true) {
            	  list.add(builder.equal(CentroNecesidades.get(Necesidades_.RAMPA),false ));	
            	}
@@ -73,7 +76,7 @@ public final class CentroEscolarSpec {
              	  list.add(builder.equal(CentroNecesidades.get(Necesidades_.NO_POSEE),false ));	
              	}
 
-            
+            //infraestructura filters
             if(true) {
             	   list.add(builder.equal(CentroInfraJoin.get(Infraestructura_.BIBLIOTECA),true ));	
             	}
@@ -137,16 +140,8 @@ public final class CentroEscolarSpec {
             	}
             
             
-         
-           
-            
-            
-       //     list.add( );
-          //  list.push(   );
-          
-            //builder.equal(CentroServicioJoin.get(Infraestructura_.BODEGA),true );
+     
             Predicate[] p = new Predicate[list.size()];
-           // return buil
             return builder.and(list.toArray(p));
         };
     }
